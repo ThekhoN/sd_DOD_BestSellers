@@ -1,14 +1,15 @@
 import {h} from 'preact';
 
 const img_placeholder = 'data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7';
-const ratingActiveStyle = {
-  width: '50px'
-}
+const blankPlaceholder = 'data:image/gif;base64,R0lGODlhAQABAAD/ACwAAAAAAQABAAACADs=';
 
 const PlaceholderSuperDealOfferUnit = () => (<li className=" inactive preData_loading dodSuperDeal_unit offerUnits_2_2 dodSuperDealUnit_ev" id="">
                                     <div className="offer-unit__after-href-container">
                                         <div className="offer-unit__img-container--rel">
-                                          <img className="offerUnit_img OfferImg b-lazy b-loaded" src={img_placeholder} alt="placeholder image"/></div>
+                                          <span className='img--constrain-size offer-unit__img-preload'>
+                                            <img src={ blankPlaceholder } alt='image placeholder snapdeal' className='img--constrain-size offer-unit__img--dp'/>
+                                          </span>
+                                        </div>
                                         <div className="offer-unit__non-img-container">
                                             <div className="align-center__container--vertical">
                                                 <div className="align-center__container-inner--vertical">

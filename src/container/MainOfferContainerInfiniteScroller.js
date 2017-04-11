@@ -13,14 +13,14 @@ import OfferUnitLi from '../component/OfferUnitLi';
 import SectionX from   '../component/SectionX';
 import InnerCardSectionXWrap from '../component/InnerCardSectionXWrap';
 import CaptionWrapper from '../component/CaptionWrapper';
-import CaptionWrapperWithButton from '../component/CaptionWrapperWithButton'
-import ButtonModalTrigger from '../component/ButtonModalTrigger'
+import CaptionWrapperWithButton from '../component/CaptionWrapperWithButton';
+import ButtonModalTrigger from '../component/ButtonModalTrigger';
 import OfferContainerWrapperNormal from '../component/OfferContainerWrapperNormal';
 import OfferContainerWrapperDoD  from '../component/OfferContainerWrapperDoD';
-import OfferUnitListBannerX from '../bannerComponent/OfferUnitListBannerX'
-import SocialShareComponent from '../component/SocialShareComponent'
-import FilterMainDOD from '../component/FilterMainDOD'
-import ModalOverlay from '../component/ModalOverlay'
+import OfferUnitListBannerX from '../bannerComponent/OfferUnitListBannerX';
+import SocialShareComponent from '../component/SocialShareComponent';
+import FilterMainDOD from '../component/FilterMainDOD';
+import ModalOverlay from '../component/ModalOverlay';
 import Loader from '../component/Loader';
 import DealNotFound from '../component/DealNotFound';
 
@@ -30,11 +30,11 @@ import {PlaceholderSuperDealOfferUnitGroup2x2} from '../component/PlaceholderSup
 
 //plugins & utils
 import axios from 'axios';
-import XHR_req from '../module/XHR_req'
-import initSocialShareModule from '../module/initSocialShareModule'
-import {debouncer} from '../module/debounce'
-import scrollToY from '../module/scrollToY'
-import getOffset from '../module/getOffset'
+import XHR_req from '../module/XHR_req';
+import initSocialShareModule from '../module/initSocialShareModule';
+import {debouncer} from '../module/debounce';
+import scrollToY from '../module/scrollToY';
+import getOffset from '../module/getOffset';
 
 // live
 const preUrl = queryUrl();
@@ -69,12 +69,12 @@ const getNextReqUrl = () => {
   const nextUrl = `${preUrl}&start=${nextStart}&count=${count}`;
   nextStart = nextStart + count; //prev nextStart + count + 1;
   return nextUrl;
-}
+};
 const getRemainingReqUrl = (countlimit, nextStart) => {
   const remainingCount = countlimit - nextStart;
   const remainingUrl =  `${preUrl}&start=${nextStart}&count=${remainingCount}`;
   return remainingUrl;
-}
+};
 
 // +++++ /getNextReqUrl +++++ //
 const forceLoadAllOffersURL = `https://mobileapi.snapdeal.com/service/generic/get/getGenericOffer?landingPage=${landingPageName}&start=0&count=${countlimit}`;
@@ -82,7 +82,7 @@ const forceLoadAllOffersURL = `https://mobileapi.snapdeal.com/service/generic/ge
 
 class MainOfferContainerInfiniteScroller extends Component {
   constructor(props){
-    super(props)
+    super(props);
 
     const captions = this.props.captions;
     const _captions = captions ? captions: {};
@@ -125,24 +125,22 @@ class MainOfferContainerInfiniteScroller extends Component {
     }
 
     this.loadMoreInfiniteContent = this.loadMoreInfiniteContent.bind(this);
-    this.renderInfiniteContent = this.renderInfiniteContent.bind(this)
+    this.renderInfiniteContent = this.renderInfiniteContent.bind(this);
 
     //new filter modal handlers
-    this.handleModalOpen = this.handleModalOpen.bind(this)
-    this.handleModalClose = this.handleModalClose.bind(this)
+    this.handleModalOpen = this.handleModalOpen.bind(this);
+    this.handleModalClose = this.handleModalClose.bind(this);
     // this.forceLoadAllOffers = this.forceLoadAllOffers.bind(this)
-    this.loadRemainingContent = this.loadRemainingContent.bind(this)
-    this.handleSubmitFilters = this.handleSubmitFilters.bind(this)
-    this.handleResetFilters = this.handleResetFilters.bind(this)
+    this.loadRemainingContent = this.loadRemainingContent.bind(this);
+    this.handleSubmitFilters = this.handleSubmitFilters.bind(this);
+    this.handleResetFilters = this.handleResetFilters.bind(this);
 
-    this.hideFilterControl = this.hideFilterControl.bind(this)
-    this.showFilterControl = this.showFilterControl.bind(this)
+    this.hideFilterControl = this.hideFilterControl.bind(this);
+    this.showFilterControl = this.showFilterControl.bind(this);
 
     //window size
-    this.updateStateMobileView = this.updateStateMobileView.bind(this)
-    //offsetTop & scroll
-    this.getOffsetTop = this.getOffsetTop.bind(this)
-    // this.getAndUpdateStateOffsetTop = this.getAndUpdateStateOffsetTop.bind(this)
+    this.updateStateMobileView = this.updateStateMobileView.bind(this);
+
     this.scrollToDodOffers = this.scrollToDodOffers.bind(this);
     this.jumpToDodOffers = this.jumpToDodOffers.bind(this);
 
@@ -179,8 +177,9 @@ class MainOfferContainerInfiniteScroller extends Component {
     }
   }
   getDodOffsetTop(){
-    const dodOffersOffsetTopStart = this.dodOffers.offsetTop;
-    const dodOffersOffsetTopEnd = this.dodOffers.offsetTop + this.dodOffers.offsetHeight;
+    // const dodOffersOffsetTopStart = this.dodOffers.offsetTop;
+    const dodOffersOffsetTopStart = getOffset(this.dodOffers).top;
+    const dodOffersOffsetTopEnd = dodOffersOffsetTopStart + this.dodOffers.offsetHeight;
     this.setState({
       offsetTop: {
         ...this.state.offsetTop,
@@ -218,16 +217,15 @@ class MainOfferContainerInfiniteScroller extends Component {
       }
     });
   }
-  getOffsetTop(node){
-    return node.offsetTop
-  }
   scrollToDodOffers(){
     const dodOffersOffsetTop = this.state.offsetTop.dodOffers
-    scrollToY(dodOffersOffsetTop - 70)
+    scrollToY(dodOffersOffsetTop - 70);
   }
   jumpToDodOffers(){
     const dodOffersOffsetTop = this.state.offsetTop.dodOffers
-    window.scrollTo(0, dodOffersOffsetTop - 55)
+    const { mobileView } = this.state;
+    const offsetScroll = mobileView ? 55 : 70;
+    window.scrollTo(0, dodOffersOffsetTop - offsetScroll);
   }
   showFilterControl(){
     const {filterControl} = this.state
@@ -262,10 +260,13 @@ class MainOfferContainerInfiniteScroller extends Component {
     }
   }
   handleModalOpen(){
-    const {loadComplete, mobileView} = this.state
+    const {loadComplete, mobileView} = this.state;
+
     if(!mobileView){
       this.scrollToDodOffers();
     }
+
+    //this.jumpToDodOffers();
     setTimeout(()=>{
       if(!loadComplete) {
         this.loadRemainingContent();
@@ -417,13 +418,15 @@ class MainOfferContainerInfiniteScroller extends Component {
 
   }
   getOffsetTopOfdetectorInfLoadStart(){
-    const offsetTop = this.detectorInfLoadStart.offsetTop;
-    this.setState({
-      offsetTop: {
-        ...this.state.offsetTop,
-        detectorInfLoadStart: offsetTop
-      }
-    });
+    if(this.detectorInfLoadStart){
+      const offsetTop = this.detectorInfLoadStart.offsetTop;
+      this.setState({
+        offsetTop: {
+          ...this.state.offsetTop,
+          detectorInfLoadStart: offsetTop
+        }
+      });
+    }
   }
   checkSecondLoadComplete(){
     const { loadComplete, secondLoadComplete } = this.state;
@@ -439,7 +442,7 @@ class MainOfferContainerInfiniteScroller extends Component {
   handleDisplayFilterControlOnScroll(){
     // console.group('handleDisplayFilterControlOnScroll');
     // console.log('running handleDisplayFilterControlOnScroll. . .');
-    const { vwPortSize, offsetTop, scrollY, loadComplete, isLoading, forceLoading, secondLoadComplete, firstLoadComplete } = this.state;
+    const { vwPortSize, offsetTop, scrollY, loadComplete, isLoading, forceLoading, secondLoadComplete, firstLoadComplete, mobileView } = this.state;
     const vwPortSizeHeight = vwPortSize.height;
     const lastScrollYValue = scrollY.lastValue;
     const scrollDirection = scrollY.direction;
@@ -449,6 +452,10 @@ class MainOfferContainerInfiniteScroller extends Component {
     // console.log('lastScrollYValue: ', lastScrollYValue);
     // console.log('dodOffersOffsetTopStart: ', dodOffersOffsetTopStart);
     const adjustedScrollThreshold = dodOffersOffsetTopStart - (vwPortSizeHeight/2);
+
+    if( !mobileView ){
+      return;
+    }
 
     if(!firstLoadComplete){
       return;
@@ -576,7 +583,7 @@ class MainOfferContainerInfiniteScroller extends Component {
 
             },
           ()=>{
-            this.getDodOffsetTop()
+            this.getDodOffsetTop();
             setTimeout(()=>{
               this.setState({
                 firstLoadComplete: true,
@@ -614,6 +621,7 @@ class MainOfferContainerInfiniteScroller extends Component {
         }/>
       <MaxWidthContainer>
             <div className="main-offer-container" >
+            {!this.state.mobileView && <SectionX/>}
             {eventIds.map(eventId=>{
               if(eventId.indexOf('superDod') > -1){
                 return (
@@ -621,7 +629,7 @@ class MainOfferContainerInfiniteScroller extends Component {
                     <InnerCardSectionXWrap>
                     <CaptionWrapper caption={captions[eventId]} eventId={eventId} stylingClass="bg--gradient-orange-to-red"/>
                     <OfferContainerWrapperDoD>
-                      <ul className='responsive-font-size--reset-0'>
+                      <ul className='responsive-font-size--reset-0 responsive-layout--centered'>
                         {this.state.showPlaceholder && <PlaceholderSuperDealOfferUnitGroup2x2/>}
                         {data.filter(offer=>(
                           offer.eventId === eventId))
@@ -655,13 +663,12 @@ class MainOfferContainerInfiniteScroller extends Component {
                     </CaptionWrapperWithButton>
                     <InnerCardSectionXWrap>
                       <OfferContainerWrapperNormal>
-                        <div className='infinite-content__container' style={{"overflow": "scroll-y"}} >
+                        <div className='infinite-content__container'  >
                           <ul className='min-height--480px'>
                             {this.state.showPlaceholder && <OfferUnitLiPlaceholderGroup2x2/>}
                             {this.renderInfiniteContent()}
                           </ul>
                           <div className='infiniteContent_waypoint'>
-                            {/* {!this.state.isUCBrowser && this.renderInfiniteLoaderWaypoint()} */}
                           </div>
                           <div className='detectorInfLoadStart' ref={node => { this.detectorInfLoadStart = node }}>
                           </div>
