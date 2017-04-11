@@ -1,0 +1,27 @@
+
+.subsribe_btn{ padding:4em 0;  clear:both;    font-family: "font-regular"; text-align:center; transition:all 0.5s linear;}
+.subsribe_text{ font-size:22px; line-height:22px; color:#75787b; padding-bottom:10px; }
+.subsribecat_text{font-size:16px; line-height:22px; color:#75787b; padding-bottom:0px; }
+.subthankyou_text{font-size:18px; line-height:22px; color:#e40046; padding-bottom:5px; display:none;}
+.dealform_filed{ padding:10px 0 0px 0;}
+.dealform_filed:last-child{padding:20px 0 0px 0;}
+.dealform_filed input[type=email]{ font-size:14px; color:#434343; height:40px; width:250px; border:solid 1px #c8c8c8; border-radius:3px; box-sizing:border-box; padding:5px;}
+.dealform_filed input[type=submit]{ background:#ee2653; height:40px; width:130px; color:#FFFFFF; font-weight:bold; font-size:15px;  border:none; border-radius:3px; box-sizing:border-box; padding:5px;}
+.dealform_filed ul{ margin:0px; padding:0px; list-style:none; text-align:center;}
+.dealform_filed ul li{ display:inline-block; margin-right:10px; font-size:15px; color:#8E8D8D;}
+.dealform_filed ul li:last-child{margin-right:0px;}
+.dealform_filed ul li input:checked{color:#75787b;}
+.divforapp{ height:300px; display:none;}
+@media (max-width: 900px){
+	.dealform_filed ul li{ margin-bottom:10px;}
+}
+
+@media (max-width: 480px){
+.dealform_filed{ margin:auto; width:300px;}
+.dealform_filed ul li{ width:45%; text-align:left; padding-bottom:0px; display:flex; float:left; font-size: 13px; margin-bottom: 0px;}
+.dealform_filed input[type="email"]{width: 195px; height:35px;}
+.dealform_filed input[type="submit"]{width: 100px; height:35px;}
+label{font-size: 12px !important; padding: 3px 0 10px !important;}
+.subthankyou_text{ font-size:14px;}
+
+}

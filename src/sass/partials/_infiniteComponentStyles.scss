@@ -1,0 +1,28 @@
+.preact-mount-node {
+  width: 100%;
+  float: left;
+  min-height: 900px;
+  min-height: 120vh;
+}
+.infiniteLoadCount {
+  position: fixed;
+  bottom: 10px;
+  left: 10px;
+  padding: 10px;
+  background: orange;
+  color: white;
+  border-radius: 2px;
+  z-index: 99;
+}
+.infinite-content__container {
+  position: relative;
+  width: 100%;
+  float: left;
+}
+.infiniteContent_waypoint {
+  width: 100%;
+  float: left;
+  position: absolute;
+  bottom: 45%;
+
+}

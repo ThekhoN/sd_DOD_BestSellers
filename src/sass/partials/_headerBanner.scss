@@ -1,0 +1,21 @@
+.in-house-main__header-banner {
+  @extend .contRofl_clr;
+  position: relative;
+
+  img, picture {
+    width: 100%;
+    height: auto;
+    display: block;
+    float: left;
+  }
+}
+
+//incase lazyloaded
+.in-house-main__header-banner  {
+  img.b-lazy, picture.b-lazy {
+    max-height: 120px;
+  }
+  img.b-loaded, picture.b-loaded {
+    max-height: 100%;
+  }
+}

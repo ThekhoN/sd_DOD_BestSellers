@@ -1,0 +1,22 @@
+.offerUnits_2_2 {
+  box-sizing: border-box;
+  display: inline-block;
+  margin:0;
+  width: 100%;
+
+  @include breakpoint(501px){
+    max-width: 500px;
+    float: none;
+  }
+
+   @include breakpoint(1024px){
+      float: none;
+      width: 48%;
+      margin: 0 1%;
+      vertical-align: top;
+    }
+
+    @include breakpoint(1366px){
+       width: 46%;
+     }
+}

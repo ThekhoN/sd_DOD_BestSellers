@@ -1,0 +1,36 @@
+.offerUnit_vwAllWrap {
+  font-size: 12px;
+
+  @include breakpoint(1024px){
+    font-size: 14px;
+  }
+}
+
+
+.offerUnit_vwAll_wrap {
+  display: inline-block !important;
+  float: right;
+  position: relative;
+  //top: 0.26em;
+
+  @include breakpoint(640px){
+    top: 0.26em;
+  }
+}
+
+.offerUnit_vwAll {
+  padding: 0.4em 0.6em 0.4em 0.6em;
+  box-sizing: border-box;
+  background: orange;
+  border-radius: 2px;
+  -webkit-box-shadow: 0px 1px 2px 0px rgba(50, 50, 50, 0.20);
+  -moz-box-shadow:    0px 1px 2px 0px rgba(50, 50, 50, 0.20);
+  box-shadow:         0px 1px 2px 0px rgba(50, 50, 50, 0.20);
+
+  a.offer-unit__href {
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+}

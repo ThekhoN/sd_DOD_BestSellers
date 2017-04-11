@@ -1,0 +1,10 @@
+.QuickLinkOffers_tagline {
+  padding: 3% 1.6%;
+  box-sizing: border-box;
+  @extend .contRofl_clr;
+  font-size: 0.875em;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: white;
+}

@@ -1,0 +1,35 @@
+.timerOfferUnit {
+  &.offerUnits_4_2 {
+    @include breakpoint(768px){
+      &:hover {
+        border: none!important;
+        box-shadow: 0 5px 17px 0 rgba(23, 84, 116, 0.18)!important;
+        z-index: 15;
+      }
+    }
+
+    .offer-unit__non-img-container {
+      padding-left: 8px;
+      box-sizing: border-box;
+    }
+  }
+}
+
+.offerUnits_4_2 {
+  box-sizing: border-box;
+  display: inline-block;
+  margin:0;
+  width: 50%;
+  float: left;
+
+   @include breakpoint(1024px){
+     float: none;
+      width: 22.6%;
+      margin:0 0.96% 1.8% 0.96%;
+      vertical-align: top;
+
+  }
+    @include breakpoint(1366px){
+        max-width:260px;
+      }
+}

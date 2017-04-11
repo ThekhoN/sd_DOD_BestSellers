@@ -1,0 +1,84 @@
+.timerX99_floatWrap {
+  font-size: 12px;
+  @include breakpoint(768px){
+    font-size: 14px;
+  }
+  @extend .contRofl_clr;
+  background: #fffafa;
+  box-sizing: border-box;
+  padding-left: $padleftVal_univ;
+  /*
+  padding: 0 $padleftVal_m;
+  @include breakpoint(769px){
+      padding: 0 $padleftVal_t;
+  }
+  @include breakpoint(1366px){
+      padding: 0 $padleftVal;
+  }
+  */
+}
+
+.timerOfferUnit {
+  cursor: pointer;
+}
+
+$labelWidth_web: 52px;
+
+$labelWidth_m: 46px;
+
+$timerX99_WrapperWidth_web: 72px;
+
+$timerX99_WrapperWidth_m: 68px;
+
+.timerX99_UnitWrap_rel {
+  position: relative;
+  float: left;
+  overflow:hidden;
+  height: 24px;
+  font-size: 12px;
+  line-height:2;
+  opacity: 0;
+
+  /* width constrained to 300px for mobile. change as required */
+  /* the height = 2 * fontSize since lineHeight is 2 */
+  width: $labelWidth_m + $timerX99_WrapperWidth_m;
+  @include breakpoint(480px){
+      height: 28px;
+      font-size: 14px;
+      width: $labelWidth_web + $timerX99_WrapperWidth_web;
+  }
+}
+
+.timerX99_Wrapper {
+  float: left;
+  text-align:center;
+  padding-left: 0.3%;
+  box-sizing: border-box;
+  display:none;
+  color: $red_main;
+  //font-weight: bold;
+  span {
+    display: inline;
+      letter-spacing:1px;
+  }
+
+  width: $timerX99_WrapperWidth_m;
+  @include breakpoint(480px){
+    width: $timerX99_WrapperWidth_web;
+  }
+}
+
+.timerX99_label {
+  box-sizing: border-box;
+  float: left;
+  text-align: left;
+
+  width: $labelWidth_m;
+  @include breakpoint(480px){
+    width: $labelWidth_web;
+  }
+}
+
+span.dayV_timerX, span.dayL_timerX {
+  display:none;
+}

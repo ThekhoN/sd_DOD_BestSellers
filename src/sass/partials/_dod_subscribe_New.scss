@@ -1,0 +1,271 @@
+@import url(https://i1.sdlcdn.com/static/img/marketing-mailers/mailer//2016/font-awesome/font-awesome.min.css);
+
+$snRed: #e40046;
+
+.dod_subscribe{
+width: 100%;
+float: left;
+
+  //important to reset form elems
+  label, span, input {
+    margin: 0;
+    padding: 0;
+  }
+
+.dod_inner{
+  max-width: 100%;
+  margin: 0 auto;
+  background: #fff;
+  box-sizing: border-box;
+  padding: 2%;
+  border-radius: 5px;
+  color: #000;
+@include breakpoint(769px){
+ width: 100%;
+ max-width: 100%;
+ text-align: center;
+}
+
+  .dodHeading{
+    font-size: 16px;
+    padding:  4%  0 4% 0;
+    @include breakpoint(769px){
+      padding: 2% 0 1% 0;
+          font-size: 18px;
+    }
+    span{
+      color:$snRed;
+      font-family: $sansSerifFontBold;
+        }
+            }
+
+  .preferCategoryHeading{
+    font-size: 14px;
+    display: block;
+    padding:  0  0 3% 0;
+      @include breakpoint(769px){
+        padding: 0 0 2% 0;
+      }
+            }
+
+
+.subscribe_form{
+ form{
+
+  ul.listingdiv{
+    li{
+      display: inline-block;
+      width: 49%;
+      padding-bottom: 2%;
+      @include breakpoint(769px){
+      width: auto;
+      margin-right: 2%;
+      }
+      }
+        }
+        .dodinputfiled{
+          display: block;
+          margin: 5% auto;
+          background: #fff;
+          width:100%;
+          text-align: left;
+          @include breakpoint(768px){
+          margin: 0 auto;
+          text-align: center;
+          }
+          .sub_submit{
+            padding: 2%;
+              border-radius: 3px;
+              border: 1px solid #a7a9ac;
+              outline: none;
+              box-shadow: none;
+              @include breakpoint(768px){
+                padding: 0.8%;
+              }
+
+          }
+
+          .sub_button{
+            background: $snRed;
+            color: #fff;
+            text-align: center;
+            padding: 2.5% 3%;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s ease 0s;
+            input{
+              border: none;
+            }
+            &:hover{
+
+              @include breakpoint(768px){
+                background: #c7003d;
+                //box-shadow: inset 0 0 0 5px $snRed;
+              }
+            }
+
+            @include breakpoint(768px){
+              padding: 0.8% 1.5%;
+            }
+
+          }
+        }
+
+
+ }
+
+}
+}
+
+
+
+
+
+label.caption {
+	position: relative;
+	padding-left: 20px;
+	font-size: 12px;
+	cursor: pointer;
+    @include breakpoint(768px){
+      font-size: 18px;
+    }
+}
+label.caption:before, label.caption:after {
+	font-family: FontAwesome;
+	font-size: 17px;
+	/*absolutely positioned*/
+	position: absolute; left: 0;
+  top: 0;
+}
+label.caption:before {
+	content: '\f096'; /*unchecked*/
+}
+label.caption:after {
+	content: '\f046'; /*checked*/
+	/*checked icon will be hidden by default by using 0 max-width and overflow hidden*/
+	max-width: 0;
+	overflow: hidden;
+	opacity: 0.5;
+	/*CSS3 transitions for animated effect*/
+	transition: all 0.35s;
+}
+
+/*hiding the original checkboxes*/
+input[type="checkbox"] {
+	display: none;
+}
+/*when the user checks the checkbox the checked icon will animate in*/
+input[type="checkbox"]:checked + label.caption:after {
+	max-width: 25px; /*an arbitratry number more than the icon's width*/
+	opacity: 1; /*for fade in effect*/
+}
+
+/*adding some colors for fun*/
+#one+label.caption:before, #one+label.caption:after {color: hsl(0, 45%, 40%);}
+#two+label.caption:before, #two+label.caption:after {color: hsl(60, 45%, 40%);}
+#three+label.caption:before, #three+label.caption:after {color: hsl(120, 45%, 40%);}
+#four+label.caption:before, #four+label.caption:after {color: hsl(180, 45%, 40%);}
+#five+label:before, #five+label:after {color: hsl(240, 45%, 40%);}
+#six+label:before, #six+label:after {color: hsl(300, 45%, 40%);}
+
+#group_622013395_1+label.caption:before, #group_622013395_1+label.caption:after {color: $snRed;}
+#group_622013395_2+label.caption:before, #group_622013395_2+label.caption:after {color: $snRed;}
+#group_622013395_3+label.caption:before, #group_622013395_3+label.caption:after {color: $snRed;}
+#group_622013395_4+label.caption:before, #group_622013395_4+label.caption:after {color: $snRed;}
+#group_622013395_5+label.caption:before, #group_622013395_5+label.caption:after {color: $snRed;}
+#group_622013395_6+label.caption:before, #group_622013395_6+label.caption:after {color: $snRed;}
+
+}
+
+.formErrorLog {
+  width: 100%;
+  float: left;
+
+  overflow: hidden;
+  height: 0;
+  opacity: 0;
+
+  transition: height 0.2s ease, opacity 0.3s linear;
+  -webkit-transition: height 0.2s ease, opacity 0.3s linear;
+
+  @include breakpoint(768px){
+    text-align: center;
+  }
+
+  span {
+    line-height: 1;
+    width: 100%;
+    padding-bottom: 5px;
+    display: block;
+    float: left;
+    font-weight: bold;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c7003d;
+    text-align: left;
+    @include breakpoint(768px){
+      text-align: center;
+    }
+  }
+}
+
+
+#subthankyou_text_Wrapper {
+  width: 100%;
+  float: left;
+
+  overflow: hidden;
+  max-height: 60px;
+  @include transition(max-height 0.4s linear);
+
+  &.hiddenX99 {
+    max-height: 0;
+  }
+}
+
+.subthankyou_text{
+  font-size:14px;
+  line-height:1.6;
+  color:#e40046;
+  padding:5px;
+  text-align: center;
+  margin: 0 auto;
+  background: #ffffff;
+  box-sizing: border-box;
+
+  //display:none;
+  //opacity:0;
+  transition: opacity 0.3s linear, transform 0.3s linear ;
+  -webkit-transition: opacity 0.3s linear , transform 0.3s linear;
+
+  @include breakpoint(768px){
+    font-size:18px;
+    padding:20px;
+  }
+}
+
+.relWrapper_anim {
+  width: 100%;
+  float: left;
+  min-height: 86px;
+}
+
+.conditionalDisplayX99 {
+  display: inline;
+  @include breakpoint(768px){
+    display: none;
+  }
+}
+
+
+//update for use in preact ~ form is independent(HTML)
+.outerformWrapperX99 {
+  max-width: 1280px;
+  overflow: hidden;
+  margin: 0 auto;
+  @include breakpoint(1600px){
+    max-width: 1600px;
+  }
+}

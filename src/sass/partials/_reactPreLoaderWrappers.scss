@@ -1,0 +1,37 @@
+.preLoader_Wrapper {
+  width: 100%;
+  float: left;
+  position: relative;
+  -webkit-transition: opacity 0.3s linear, height 0.2s linear;
+  transition: opacity 0.3s linear, height 0.2s linear;
+  /*background: grey;*/
+  height: 1000px;
+  height: 100vh;
+  z-index: 5;
+}
+
+.contentX99_Wrapper {
+  width: 100%;
+  float: left;
+  position: relative;
+  /*
+  -webkit-transition: opacity 1s linear;
+  transition: opacity 1s linear;
+  */
+  z-index: 4;
+}
+
+.preLoader_UL {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+}
+
+
+span.span-container--block {
+  width: 100%;
+  display: block !important;
+  float: left;
+}

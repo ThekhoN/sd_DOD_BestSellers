@@ -1,0 +1,144 @@
+
+.paddingWrapX99 {
+  box-sizing: border-box;
+  padding: 2%;
+}
+
+.inactive {
+  display: inline-block;
+  cursor: default;
+  width: 100%;
+  text-align: center;
+  font-size: 16px;
+  color: transparent!important;
+  //@include transition(all 5s linear);
+  opacity: 0.5;
+
+  &:hover {
+    border: 0;
+  }
+
+  a {
+    color: transparent!important;
+  }
+  //image normal
+  .offer-unit__img-container--rel img.b-lazy {
+      opacity: 1 !important;
+      width: 130px;
+      height: 152px;
+      background-size: 50%;
+
+      @include breakpoint(1024px){
+        width: 166px;
+        height: 194px;
+      }
+  }
+
+  //discount_dom
+  .offer-unit__discount-container {
+    margin-bottom: 0.3em !important;
+    display: none;
+  }
+
+  .offer-unit__discount {
+    background: $loadercol;
+    color: transparent;
+    border: 0;
+    display: none;
+  }
+
+  //title && rating && price & tagline
+  .offer-unit__title, .offer-unit__rating-review-container, .offer-unit__price-tagline-discount-container, .offer-unit__price-container--inner {
+    background: $loadercol;
+    color: transparent;
+    height: 16px !important;
+    padding: 0;
+    //margin-bottom: 0.6em;
+    float: left;
+    margin: 0.3em 0 !important;
+  }
+
+  .offer-unit__rating-review-container {
+    //margin-top: 0.1em;
+  }
+
+  .offer-unit__review, span.offer-unit__display-price {
+    opacity: 0;
+  }
+
+  .offer-unit__rating--enabled, .offer-unit__rating--disabled {
+    background: none !important;
+  }
+
+  .offer-unit__price-container {
+    display: none;
+  }
+
+  &.dodSuperDeal_unit  {
+    max-width: 100%;
+  }
+
+  .text--two-line:after {
+    background: transparent;
+  }
+
+}
+
+li.inactive  {
+  max-width: 260px;
+}
+
+li.inactive.fadeOutx99  {
+  opacity: 0;
+}
+
+li.inactive {
+  .placeholder__loader--order1, .placeholder__loader--order2, .placeholder__loader--order3 {
+    position: relative;
+    overflow: hidden;
+    &:before {
+      //@include transition(all 0.3s linear);
+      content:'';
+      background: #000;
+      height: 100px;
+      width: 100px;
+      position: absolute;
+      left:0;
+      bottom: 0;
+      opacity: 0.1;
+      @include transform(translate3d(0, 0, 0));
+    }
+  }
+}
+
+
+li.inactive.preData_loading {
+  .placeholder__loader--order1 {
+    &:before {
+      //@include transform(translateX(200px));
+      @include animation(translateX_loop 0.7s linear infinite);
+      @include animation-delay(0s);
+    }
+  }
+  .placeholder__loader--order2 {
+    &:before {
+      //@include transform(translateX(200px));
+      @include animation(translateX_loop 0.7s linear infinite);
+      @include animation-delay(0.1s);
+    }
+  }
+
+  .placeholder__loader--order3 {
+    &:before {
+      //@include transform(translateX(200px));
+      @include animation(translateX_loop 0.7s linear infinite);
+      @include animation-delay(0.2s);
+    }
+  }
+}
+
+
+@include keyframes(translateX_loop) {
+    0% {@include transform(translate3d(0, 0, 0) )}
+    100% {@include transform(translate3d(400px, 0, 0) )}
+}

@@ -1,0 +1,291 @@
+$border-radius: 3px;
+
+#DealofDayOffers {
+  overflow: hidden;
+}
+
+.modal-overlay {
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  position: absolute;
+  top: 0;
+  z-index: 5;
+  opacity: 0;
+  -webkit-transform: scale(0);
+  transform: scale(0);
+  @include transition(opacity 0.2s, transform 0s);
+
+  &.active {
+    -webkit-transform: scale(1);
+    opacity: 1;
+  }
+}
+
+.filterMainDODContainer {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  /*
+  transform: translateZ(0);
+  @include transform(scale(0));
+  -webkit-transform-origin: top right;
+  transform-origin: top right;
+  @include transition(all 0.2s linear);
+  */
+
+  &.true {
+    /*
+    @include transform(scale(1));
+    opacity: 1;
+    */
+  }
+}
+
+.filterMainDOD {
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  /*
+    transform: translateZ(0);
+    @include transform(scale(0));
+    -webkit-transform-origin: top right;
+    transform-origin: top right;
+    @include transition(all 0.2s linear);
+
+    &.true {
+      @include transform(scale(1));
+      opacity: 1;
+    }
+
+  */
+  fieldset {
+    border: 0;
+    width: 100%;
+    float: left;
+  }
+ input,label,select,button,textarea{margin:0;border:0;padding:0;display:inline-block;vertical-align:middle;white-space:normal;background:none;line-height:1;}input:focus{outline:0}input,textarea{-webkit-box-sizing:content-box;-moz-box-sizing:content-box;box-sizing:content-box}button,input[type=reset],input[type=button],input[type=submit],input[type=checkbox],input[type=radio],select{-webkit-box-sizing:border-box;-moz-box-sizing:border-box;box-sizing:border-box}input[type=checkbox],input[type=radio]{width:13px;height:13px}input[type=search]{-webkit-appearance:textfield;-webkit-box-sizing:content-box}::-webkit-search-decoration{display:none}button,input[type="reset"],input[type="button"],input[type="submit"]{overflow:visible;width:auto}::-webkit-file-upload-button{padding:0;border:0;background:none}textarea{vertical-align:top;overflow:auto}select[multiple]{vertical-align:top}
+}
+
+.filterMainDOD {
+  color: #bcbec0;
+  width: 100%;
+  background: white;
+  position: fixed;
+  box-shadow: none;
+  transform: translateZ(0);
+  bottom: 0;
+  left: 0;
+
+  @include breakpoint(640px){
+    border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
+    position: absolute;
+    height: 100%;
+    top: 0;
+    box-shadow: 0px -3px 16px 0px rgba(50, 50, 50, 0.15);
+  }
+
+
+  h4 {
+    display: inline-block;
+    font-weight: normal;
+    font-size: 14px;
+    letter-spacing: 1px;
+
+    @include breakpoint(640px){
+      font-size: 16px;
+    }
+  }
+}
+
+span.filterClose {
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 0;
+  padding: 21px 29px;
+  background: $modalBorderCol;
+  color: #414042;
+  cursor: pointer;
+  font-size: 20px;
+
+  @include breakpoint(640px){
+    border-top-right-radius: $border-radius;
+    padding: 20px $paddingWrap;
+    font-size: 28px;
+  }
+
+  @include breakpoint(1664px){
+    padding: 21px 28px;
+  }
+}
+
+.filterMainHeader {
+  text-align: left;
+  padding: $mobilePaddingWrapBig $mobilePaddingWrap;
+  padding-left: 23px;
+  box-sizing: border-box;
+  width: 100%;
+  float: left;
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
+  border-bottom: 1px solid $modalBorderCol;
+
+  @include breakpoint(640px){
+    padding: 20px $paddingWrap;
+  }
+}
+
+.checkboxUnitContainer {
+  //cursor: pointer;
+  label {
+    @include transition(color 0.3s linear);
+    cursor: pointer;
+  }
+
+  label:hover {
+    @include breakpoint(640px){
+      color: $activeTheme;
+    }
+  }
+}
+
+.wrapPadding {
+  padding: $mobilePaddingWrapBig $mobilePaddingWrap;
+  padding-left: 23px;
+  padding-right: 0;
+  box-sizing: border-box;
+
+  @include breakpoint(640px){
+    padding: $paddingWrap;
+  }
+}
+
+.filterMainFiltersContainer {
+  background: white;
+  width: 100%;
+  //height: 324px;
+  height: 336px;
+  font-size: 12px;
+  text-align: left;
+
+  @include breakpoint(640px){
+    font-size: 14px;
+    height: 384px;
+  }
+
+  input, label {
+    color: $inputColor;
+
+  }
+}
+
+.leftColumnFilterMain {
+  width: 35%;
+  height: 100%;
+  box-sizing: border-box;
+  float: left;
+  border-right: 1px solid $modalBorderCol;
+  color: $activeTheme;
+  @include breakpoint(640px){
+    width: 150px;
+  }
+}
+
+.categoryTitleWrapper {
+  position: relative;
+  z-index: 5;
+}
+
+.rightColumnFilterMain {
+  width: 65%;
+  height: 100%;
+  box-sizing: border-box;
+  float: left;
+  @include breakpoint(640px){
+    width: 350px;
+  }
+}
+
+.filterRowBorderBottom {
+  border-bottom: 1px solid $modalBorderCol;
+  box-sizing: border-box;
+
+  &:last-child {
+    border-bottom: 0;
+  }
+}
+
+.filterRowElem {
+  width: 100%;
+  float: left;
+}
+
+.filterLabel {
+  display: inline-block;
+  padding-left: 10px;
+  font-size: 12px;
+
+  @include breakpoint(640px){
+    font-size: 14px;
+  }
+}
+
+.filterMainSubmitWrapper {
+  width: 100%;
+  float: left;
+  background: $modalBorderCol;
+
+  button {
+    padding: 27px 23px;
+    box-sizing: border-box;
+    font-family: inherit;
+    cursor: pointer;
+    @include breakpoint(640px){
+      padding: $paddingWrap;
+    }
+  }
+}
+
+.filterMainResetContainer {
+  display: inline-block;
+  float: left;
+
+  @include breakpoint(max-width 641px){
+    text-align: center;
+    min-width: 50%;
+  }
+
+  button {
+    color: #808285;
+
+    @include breakpoint(max-width 641px){
+      width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+
+}
+
+.filterMainSubmitContainer {
+  display: inline-block;
+  float: right;
+  box-sizing: border-box;
+
+  @include breakpoint(max-width 641px){
+    text-align: center;
+    min-width: 50%;
+  }
+
+  button {
+    color: white;
+    background: $activeTheme;
+
+    @include breakpoint(max-width 641px){
+      width: 100%;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}

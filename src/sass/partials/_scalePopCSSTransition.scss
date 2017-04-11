@@ -1,0 +1,28 @@
+
+
+//scalePop
+.scalePop-enter {
+  opacity: 0.01;
+  @include transform(scale(0.8, 0.8));
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+.scalePop-enter.scalePop-enter-active {
+  opacity: 1;
+  @include transform(scale(1, 1));
+  -webkit-transition: opacity 300ms linear, transform 300ms cubic-bezier(0.580, -0.180, 0.250, 1.240);
+  transition: opacity 300ms linear, transform 300ms cubic-bezier(0.580, -0.180, 0.250, 1.240);
+
+}
+.scalePop-leave {
+  opacity: 0.01;
+  @include transform(scale(0.8, 0.8));
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+.scalePop-leave.scalePop-leave-active {
+  opacity: 0.01;
+  @include transform(scale(0.8, 0.8));
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}

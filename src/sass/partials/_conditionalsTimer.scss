@@ -1,0 +1,36 @@
+.timerX99_UnitWrap_rel {
+  span.dayV_timerX, span.dayL_timerX {
+    display: none !important;
+
+  }
+}
+
+.timerX_labelX {
+  font-size: 11px !important;
+}
+
+.timerX99_label {
+  @include breakpoint(480px){
+    width: 48px !important;
+  }
+}
+
+.wrap_saveAmt {
+  display: none !important;
+}
+
+#OfferUnitsWithTimerX99 {
+  .offer-unit__li  {
+    border:0 !important;
+    box-shadow: 0 !important;
+  }
+
+  .offerUnits_4_2  {
+    @include breakpoint(max-width 1024px){
+      border: 1px solid #f3f0f0;
+      border-left: none;
+      border-bottom: 1px solid #f3f0f0;
+      border-top: 0;
+    }
+  }
+}

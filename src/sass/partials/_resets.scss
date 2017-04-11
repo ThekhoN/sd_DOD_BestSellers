@@ -1,0 +1,48 @@
+.in-house-main__style-reset li div {
+    margin-top: 0;
+}
+
+// ensure max-width and center
+#content_wrapper{
+    padding: 0 !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 0 auto !important;
+}
+
+/*
+.hidden{
+  display: none;
+}
+//to remove fixed sd navBar
+
+.stickHeadNew {
+	display:none;
+}
+
+.stickHeadNew {
+  display:none;
+  //transform: translate(0, 0);
+}
+*/
+
+// remove additional space between SD header and pageContent
+.pageWrapper {
+  display: none !important;
+}
+
+#back-top{
+ background: transparent;
+ position: relative;
+}
+
+#back-top a:before, #back-top a:after {
+ display: none !important;
+}
+
+div#footer-top-text {
+    @include breakpoint(1664px){
+      width: auto !important;
+      max-width: 1600px;
+    }
+}

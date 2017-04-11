@@ -1,0 +1,186 @@
+/* Welcome to Compass.
+ * In this file you should write your main styles. (or centralize your imports)
+ * Import this file using the following HTML or equivalent:
+ * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
+
+ @font-face {
+     font-family: 'MyBariolReg';
+     src: url(https://i1.sdlcdn.com/static/img/marketing-mailers/mailer/2016/001cr/mg/Bariol_Regular.eot);
+     src: url(https://i1.sdlcdn.com/static/img/marketing-mailers/mailer/2016/001cr/mg/Bariol_Regular.woff) format("woff"), url(https://i1.sdlcdn.com/static/img/marketing-mailers/mailer/2016/001cr/mg/Bariol_Regular.ttf) format("truetype"), url(https://i1.sdlcdn.com/static/img/marketing-mailers/mailer/2016/001cr/mg/Bariol_Regular.svg) format("svg");
+     font-weight: 400;
+     font-style: normal
+ }
+
+ @font-face {
+     font-family: font-regular;
+     src: url(https://i1.sdlcdn.com/static/img/marketing-mailers/mailer/2016/001cr/mg/MaisonNeueWEB-Book.woff) format("woff")
+ }
+
+ @font-face {
+     font-family: font-bold;
+     src: url(https://i1.sdlcdn.com/static/img/marketing-mailers/mailer/2016/001cr/mg/MaisonNeueWEB-Bold.woff) format("woff")
+ }
+
+
+@import "susy";
+@import "breakpoint";
+@import "bourbon/bourbon";
+@import "scut";
+
+@import 'partials/resets';
+@import 'partials/vars';
+@import 'partials/utilities';
+@import 'partials/headerBanner';
+@import 'partials/sectionXWrappers';
+@import 'partials/defaultUnitOffer_newTheme';
+@import 'partials/loaderInactive';
+//@import 'partials/loaderActiveTransition';
+@import 'partials/newThemeStyles';
+@import 'partials/caption_newTheme';
+
+/// +++++ required for captionTimer
+//@import 'partials/caption_newTimerWrapper';
+
+/// +++++ newSocialShare css
+@import 'partials/socialShare_newTheme';
+
+@import 'partials/viewAll_new';
+//@import 'partials/offerUnit_vwAll';
+@import 'partials/footerBannerX99';
+
+/// +++++ navMainX
+/*
+@import 'partials/navMainX';
+  /// +++++ navMainX_slideIn
+  @import 'partials/navMainX_slideIn_utils';
+  @import 'partials/navMainX_slideIn';
+  @import 'partials/navMainX_slideIn_items';
+  @import 'partials/navMainX_showOnScroll';
+  @import 'partials/navMainX_showOnScroll_bottomNav';
+*/
+
+//@import 'partials/dod_diwaliNav';
+
+/// * * * quickLinks
+//@import 'partials/quickLinkOffers';
+
+/// * * * electronicsSale
+//@import 'partials/electronicsSaleConditionals';
+//@import 'partials/upcomingOffers';
+
+/// * * * timerOfferStyles
+//@import 'partials/timerAllStyles';
+//@import 'partials/timerHeader';
+//@import 'partials/offerWithTimer';
+//@import 'partials/conditionalsTimer';
+// +++++ hourlyTimer
+//@import 'partials/hourly';
+
+/// * * * DOD
+@import 'partials/dod_SuperDeals';
+@import 'partials/dod_responsive';
+@import 'partials/dod_conditionals';
+@import 'partials/offerUnit_vwAll';
+// @import 'partials/dod_subscribeForm';
+@import 'partials/dod_subscribe_New';
+
+/// +++++ all icons
+@import 'partials/local_Icons_b64';
+
+/// +++++ CONDITIONALS
+@import 'partials/filterConditionals';
+
+/// +++++ ratingTooltip
+@import 'partials/ratingTooltip';
+
+/// ++++ modal
+@import 'partials/buttonModalTrigger';
+@import 'partials/filterComponentStyles';
+@import 'partials/filterMainModalContainer';
+/// +++++ reactSpecific
+@import 'partials/reactPreLoaderWrappers';
+@import 'partials/infiniteComponentStyles';
+
+@import 'partials/reactLazyLoad';
+@import 'partials/loaderComponent';
+@import 'partials/slideCSSTransition';
+@import 'partials/scalePopCSSTransition';
+@import 'partials/fadeCSSTransition';
+
+$susy:( container:1920,
+columns:12,
+gutters:0.096,
+gutter-position:after,
+math:fluid,
+//debug: (image: show),
+output:float // For Debugging - mainWrapper should not have a bg Color
+);
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+#in-house-main__container {
+    @include transition(all 0.3s linear);
+
+    @include container(1920px);
+    font-size: 1em;
+    line-height: 1;
+    font-size: 14px;
+    font-family: $sansSerifFont;
+    position: relative;
+    overflow: hidden;
+    color: $textCol;
+    background: $wrapperBG;
+
+    @include breakpoint(768px){
+        font-size: 16px;
+    }
+
+    ul {
+        list-style: none;
+    }
+
+    a img {
+        border: none;
+    }
+    a {
+        outline: 0;
+        text-decoration: none;
+    }
+    img.map,
+    map area {
+        outline: none;
+    }
+
+    span.offer-unit-container-span {
+      width: 100% !important;
+      display: block;
+    }
+}
+
+.main-offer-container {
+  width: 100%;
+  float: left;
+}
+
+.preact-inner-app-container {
+  width: 100%;
+  float: left;
+  position: relative;
+}
+
+#root.preact-mount-node {
+  min-height: 900px;
+  min-height: 100vh;
+}
+
+.detectorInfLoadStart {
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: none;
+  bottom: 0;
+  left: 0;
+}

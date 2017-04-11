@@ -1,0 +1,67 @@
+
+
+//all fonts//
+//roboto
+//$sansSerifFont:"Roboto", "Segoe UI", "Helvetica Neue", "Arial", sans-serif;
+
+//local
+$sansSerifFont:"Maison", "Segoe UI", "Helvetica Neue", "Arial", sans-serif;
+
+//live
+//$sansSerifFont: inherit;
+
+//new
+$sansSerifFont: "font-regular";
+$sansSerifFontBold: "font-bold";
+
+//colors
+$wrapperBG: #EBEAEA;
+$separator: #f3f0f0;
+//$textCol:#999999;
+//$textCol:#212121;
+//$textCol_dark: #333333;
+
+$borderCol: #cccccc;
+//$textCol: #999999;
+$textCol: #888888;
+$textCol_dark: #333333;
+$loadercol: #f5f5f5;
+$active: #FFBE96;
+$red_main: #FF2341;
+$red_dark: #C80032;
+$disabled_grey: #777777;
+
+$navMainActive: #C80032;
+
+//dimensions
+//$fximgSize_w: 166px;
+//$fximgSize_h: 194px;
+$fximgSize_w: 220px;
+$fximgSize_h: 258px;
+$fximgSize_w_small: 130px;
+$fximgSize_h_small: 152px;
+
+$verticalOffset: 1em;
+
+$padleftVal: 1.6%;
+$padleftVal_m: 3.6%;
+$padleftVal_t: 4.6%;
+
+
+$padleftVal_univ: 0.8em;
+
+//upcoming & discountWrap_height
+$discountWrap_height: 20px;
+
+
+
+//filterComponentVars
+
+$mobilePaddingWrap: 10px;
+//$mobilePaddingWrapBig: 20px;
+$mobilePaddingWrapBig: 25px;
+$paddingWrap:30px;
+$modalBorderCol: #e6e7e8;
+$activeTheme: #da1c5c;
+$inputColor: #414042;
+$minHeightDealofDayOffers: 480px;

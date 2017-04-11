@@ -1,0 +1,29 @@
+#offerUnit_Wrapper {
+  .offerUnit_Wrapper {
+    text-align: center;
+  }
+
+  &.flex_width_contstraWrap_96_76_100 {
+    @include breakpoint(768px){
+      width: 98%;
+    }
+  }
+}
+
+.duoHeroUnit_Wrapper {
+  width: 50%;
+  margin: 0;
+  display: inline-block;
+  box-sizing: border-box;
+  border-left: 1px solid $separator;
+
+  &:first-child{
+    border-left: 0;
+  }
+
+  @include breakpoint(768px){
+      width: 46%;
+      margin: 1%;
+      border-left: 0;
+    }
+  }

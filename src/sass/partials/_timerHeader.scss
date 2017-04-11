@@ -1,0 +1,50 @@
+$fontsz_TimerH: 24px;
+$fontlh_TimerH: 23px;
+$fontlh_TimerH_modSmall: 32px;
+$fontsz_TimerH_m: 18px;
+$fontlh_TimerH_m: 24px;
+
+$fontlh_TimerH_modLarge: 26px;
+
+$timerX99_WrapperWidth_web_timerHeader: 112px;
+$timerX99_WrapperWidth_m_timerHeader: 82px;
+
+
+.timerHeader_Wrap {
+  display: inline-block;
+
+  @include breakpoint(640px){
+    margin-left: 0.3em;
+  }
+
+  .timerX99_Wrapper {
+    color: #C80032;
+    width: $timerX99_WrapperWidth_m_timerHeader;
+    @include breakpoint(480px){
+      width: $timerX99_WrapperWidth_web_timerHeader;
+    }
+  }
+
+  .timerX99_floatWrap {
+    background: none;
+    position: relative;
+  }
+
+  .timerX99_UnitWrap_rel {
+    font-size: $fontsz_TimerH_m ;
+    line-height: $fontlh_TimerH_m - 2;
+
+    @include breakpoint(480px){
+      line-height: $fontlh_TimerH_modSmall;
+    }
+
+    @include breakpoint(640px){
+      font-size: $fontsz_TimerH ;
+      line-height: $fontlh_TimerH_m;
+    }
+
+    @include breakpoint(768px){
+      line-height: $fontsz_TimerH_m;
+    }
+  }
+}

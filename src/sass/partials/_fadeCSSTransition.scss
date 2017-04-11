@@ -1,0 +1,28 @@
+
+
+//fade
+.fade-enter {
+  opacity: 0.01;
+  //@include transform(scale(0.6, 0.6));
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+.fade-enter.fade-enter-active {
+  opacity: 1;
+  //@include transform(scale(1, 1));
+  -webkit-transition: opacity 300ms cubic-bezier(0.580, -0.180, 0.250, 1.240);
+  transition: opacity 300ms cubic-bezier(0.580, -0.180, 0.250, 1.240);
+
+}
+.fade-leave {
+  opacity: 0.01;
+  //@include transform(scale(0.6, 0.6));
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}
+.fade-leave.fade-leave-active {
+  opacity: 0.01;
+  //@include transform(scale(0.6, 0.6));
+  -webkit-transition: all 200ms linear;
+  transition: all 200ms linear;
+}

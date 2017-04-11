@@ -1,0 +1,28 @@
+.subscribeFormContainer {
+	background: #ebeaea;
+}
+#subscribeFormDOD {
+	max-width: 300px;
+	margin: 0 auto;
+	height: 100px;
+	background: white;
+	-webkit-box-shadow: 0px 5px 5px 0px rgba(50, 50, 50, 0.35);
+	-moz-box-shadow:    0px 5px 5px 0px rgba(50, 50, 50, 0.35);
+	box-shadow:         0px 5px 5px 0px rgba(50, 50, 50, 0.35);
+	text-align: center;
+
+	h2 {
+		padding: 20px 0 18px 0;
+		font-size: 16px;
+	}
+}
+
+.sF_header {
+	@extend .contRofl_clr;
+}
+
+$sdRed: #e40046;
+
+.dailyAlertCol {
+	color: $sdRed;
+}

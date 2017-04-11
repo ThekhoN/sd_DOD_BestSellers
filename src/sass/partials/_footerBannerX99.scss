@@ -1,0 +1,19 @@
+.footerBannerX99_Wrapper {
+  @extend .contRofl_clr;
+}
+
+li.footerBannerX99_unit {
+  @extend .contRofl_clr;
+  text-align: center;
+  margin:0.6em 0;
+
+
+  img.offerUnit_img {
+    max-width: 100% !important;
+    height: auto;
+  }
+}
+
+#NGOFooterBannerX99 {
+  margin-bottom: 0 !important;
+}

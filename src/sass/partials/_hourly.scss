@@ -1,0 +1,33 @@
+/*Hourly*/
+.hourlybxcor .captionX99  { background-image:linear-gradient(325deg, #dd5e89, #f7bb97); padding:0.6em 0 0em; margin:0 0 1em;}
+.hourlybxcor h2 span.decorX { display:block !important; text-align:center; color:#fff; }
+.timer_cont { margin:0; display:inline-block; vertical-align:middle;}
+.timerX02{position:relative; z-index:2; margin:0% auto; display:block; max-width:208px; text-align:center;}
+.outerTimerX_Wrapp{ color: #606060 !important;  font-size:20px; display:inline-block;  width: auto;  z-index: 2; text-align:left; }
+.outerTimerX_Wrapp:after{content:""; display:table; clear:both;}
+.timerX_valueX.dayV_timerX, .timerX_valueX.hrV_timerX, .timerX_valueX.minV_timerX, .timerX_valueX.secV_timerX { font-size:1.6em; }
+.timerX_WrapperMain{ float:left; position:relative; width:100%; overflow:visible !important; height:auto; font-weight:100; margin:0 auto; }
+.Timblink { position:relative; top:9px; float:left; }
+.timerX_Wrapper{font-size:1em; width:220px; float:left; height:auto; line-height:normal; color:#fff; font-weight:normal; text-align:left;letter-spacing:1px; display:none; margin:3px 0 0;}
+.timerX_labelX {font-size:0.6em; }
+.timerX_labelX.hrL_timerX, .timerX_labelX.minL_timerX, .timerX_labelX.secL_timerX { display:inline; text-align:center; font-size:1em; }
+.hourlyofferbx .captionX99 h2 { font-size:1em; text-align:center; padding:10px 0 18px; line-height:normal;  }
+.hourlyofferbx .captionX99 { margin:0; }
+.hourlyofferbx h2 span.decorX { padding:0 20px 5px 0;  }
+.hourlyofferbx h2 span.decorX:after { bottom:0.55em; }
+.hourlyofferbx .captionX99 { padding:0.3em 0.3em 0.3em 0; }
+.hourlyofferbx.section__container--rel section__offset--margin-bottom { margin:0; }
+.timbx { display:inline-block; margin:0 10px; float:left;}
+.timbx:nth-child(2) { display:none;}
+.timer_cont span::before, .timer_cont span::after {display:none!important;}
+
+@media(max-width:385px) {
+.timerX_valueX.dayV_timerX, .timerX_valueX.hrV_timerX, .timerX_valueX.minV_timerX, .timerX_valueX.secV_timerX { font-size:1.2em; }
+.hourlybxcor .captionX99 h2 { font-size:1.2em; }
+.timerX_WrapperMain::after { left:-50px; top:19px; }
+.timerX_WrapperMain::before { right:-40px; top:19px; }
+.Timblink { top:2px; }
+}
+.hourlybxcor .captionX99 {
+  overflow: hidden !important;
+}

@@ -1,0 +1,29 @@
+/************************************************/
+		D O N E
+/************************************************/
+
+
+# update snadpeal DOD facebook-share OGimage
+
+# changes to subscribe DOD
+
+	- change Kids' to Kid's Fashion
+
+	- increase offset height on click enter user email
+
+
+/************************************************/
+		T O D O
+/************************************************/
+
+# update waypoints (only use onEnter)
+	
+	one below super deals (onEnter = hide filter)
+
+	one at the start of DOD offer deals (onEnter  = show filter)
+
+	one at the end of DOD offer deals (onEnter  = show filter)
+
+	one at the start of social share (onEnter = hide filter)
+
+	

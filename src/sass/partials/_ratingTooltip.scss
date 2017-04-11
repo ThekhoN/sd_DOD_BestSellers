@@ -1,0 +1,58 @@
+.toolTip-box-outer{margin-top:15px !important;margin-left:-13px;background:#fff;position:absolute;color:#565656;font-size:13px;line-height:12pt;padding:0;box-shadow:0 0 3px 2px rgba(0,0,0,0.1);-moz-box-shadow:0 0 3px 2px rgba(0,0,0,0.1);-webkit-box-shadow:0 0 3px 2px rgba(0,0,0,0.1);z-index:53;border:1px solid #ccc;border-radius:5px;max-width:400px;min-width:400px;display:none}
+.toolTip-box-outer #ratings-wrapper{display:inline-block;cursor:pointer;width:100%}
+.toolTip-box-outer .productWriteaReview{background:#fafafa;padding:10px;text-align:center;border-bottom-left-radius:10px;border-bottom-right-radius:10px}
+.toolTip-box-outer .product_infogram{padding:27px 0 22px;color:#000}
+.toolTip-box-outer .product_infogram .rating-info{text-align:center;margin:25px 0 10px}
+.toolTip-box-outer .product_infogram .rating-info .ratetxt span{font-size:45px;color:#767676}
+.toolTip-box-outer .product_infogram .rating-info .ratetxt .LTgray{line-height:10px;font-size:15px;display:block;padding-top:10px}
+.toolTip-box-outer .product_infogram .rating-info .ratetxt .av-rating{padding-top:10px;display:block;margin:0 auto;width:46%}
+.toolTip-box-outer .product_infogram .rating-histogram{padding-left:30px;margin-left:-2px;min-width:170px!important;text-align:left}
+.toolTip-box-outer .product_infogram .rating-histogram .rating-histogram-header{margin-bottom:10px}
+.toolTip-box-outer .product_infogram .rating-histogram .row{width:100%;margin:0}
+.toolTip-box-outer .product_infogram .rating-histogram .row span{font-size:10px;color:#9e9e9e}
+.toolTip-box-outer .product_infogram .rating-histogram .row span.review-bar{background-color:#eda200;text-decoration:none}
+.toolTip-box-outer .product_infogram .rating-histogram .row span:hover{text-decoration:none}
+.toolTip-box-outer .product_infogram .rating-histogram .row span.barover{background:#f6b800;height:9px;margin:0 3px 0 8px;width:0;display:inline-block;transform:scaleX(0.1);transition:all 4.4s ease}
+.rating-histogram{width:70%;float:left;box-sizing:border-box}
+.rating-info{width:30%!important;float:left;box-sizing:border-box}
+.toolTip-box-outer .product_infogram .rating-info .ratetxt .av-rating{width:79%}
+.toolTip-box-outer .product_infogram{padding:7px 0}
+.productWriteaReview{display:none}
+.toolTip-box-outer{min-width:305px}
+.toolTip-box-outer .product_infogram .rating-histogram{padding-left:5px;margin-left:-2px;min-width:200px}
+@-webkit-keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+@keyframes spin {
+  0% {
+    -webkit-transform: rotate(0deg);
+            transform: rotate(0deg);
+  }
+  100% {
+    -webkit-transform: rotate(360deg);
+            transform: rotate(360deg);
+  }
+}
+.loader-x99_wrapper {
+  width: 100%;
+  float: left;
+  padding: 30px 0;
+  text-align: center;
+}
+.loader-x99 {
+  border-radius: 50%;
+  margin: 0 auto;
+  width: 32px;
+  height: 32px;
+  border: 0.25rem solid rgba(228, 0, 70, 0.9);
+  border-top-color: rgba(228, 0, 70, 0.2);
+  -webkit-animation: spin 1s infinite linear;
+          animation: spin 1s infinite linear;
+}

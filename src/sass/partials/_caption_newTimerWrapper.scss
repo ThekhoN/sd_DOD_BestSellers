@@ -1,0 +1,78 @@
+$height_small: 16px;
+$height: 24px;
+$minW_wrapper: 300px;
+$pad_left: 10px;
+$mOffset: 16px;
+
+.caption_timerWrapperX99 {
+  @extend .contRofl_clr;
+  text-align: center;
+
+}
+
+.caption_timer_UnitWrap_rel {
+  position: relative;
+  overflow: visible;
+  box-sizing: border-box;
+  margin: 0 auto;
+  margin-top: 6px;
+  color: white;
+  text-align: left;
+  font-size: $height_small;
+  height: $height_small;
+  line-height: $height_small;
+
+  width: $minW_wrapper;
+  float: left;
+  display: inline-block !important;
+  text-align: left;
+  margin-left: $mOffset;
+
+  @include breakpoint(480px){
+    float: none;
+    margin-left: 0 ;
+    text-align: center;
+  }
+
+  @include breakpoint(980px){
+    font-size:$height;
+    height: $height;
+    line-height: $height;
+  }
+
+
+}
+
+.timerX99_Wrapper {
+  @extend .contRofl_clr;
+  span {
+    display: inline-block !important;
+  }
+}
+
+.timerX_valueX {
+  letter-spacing: 1px;
+  font-family: font-regular;
+
+  @include breakpoint(980px){
+    font-family: font-bold;
+  }
+}
+
+
+.timerX_labelX {
+  font-size: ($height_small - 4);
+  font-family: font-regular;
+
+  @include breakpoint(980px){
+    font-size: ($height - 4);
+  }
+}
+
+//if HOURLY
+
+#liveTimerOffer_01_timer {
+  .dayV_timerX, .dayL_timerX, .hrV_timerX, .hrL_timerX {
+    display: none !important;
+  }
+}

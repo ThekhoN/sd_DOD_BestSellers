@@ -1,0 +1,183 @@
+//only css
+
+.airPlaneBG_diwaliF {
+  background: url('https://i1.sdlcdn.com/static/img/marketing-mailers/mailer/2016/x_999/diwaliF_plane.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.rocketWrap_diwaliF {
+  width: 31px;
+  height: 71px;
+  float: left;
+  margin-right: 12px;
+  position: relative;
+  margin-top: -9.1px;
+}
+
+.airplaneWrap_diwaliF {
+  width: 25px;
+  height: 25px;
+  float: left;
+  @extend .verticalCenterX99;
+}
+
+.rocketBG_diwaliF {
+  background: url('https://i1.sdlcdn.com/static/img/marketing-mailers/mailer/2016/x_999/diwaliF_rocket.png');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.shareThisPageOnTxt {
+  float: left;
+  height: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  color: #666666;
+  padding: 6px;
+  @extend .verticalCenterX99;
+}
+
+.shareX99_wrapper {
+    width: 100%;
+    float: left;
+    overflow: visible;
+    *zoom: 1;
+    background: #f7f7f7;
+    height: 60px;
+    //padding-bottom: 0.8em;
+    font-family: $sansSerifFont;
+}
+
+.shareX99 {
+    max-width: 1366px;
+    margin: 0 auto;
+    padding: 0;
+    box-sizing: border-box;
+    text-align: left;
+    overflow: visible;
+    //border-top: 4px solid #FFBE96;
+    position: relative
+}
+
+.shareX99_h3Wrap {
+    display: none;
+    width: 142px;
+    float: left;
+
+    @include breakpoint(768px){
+      display: block;
+      padding-left: 16px;
+    };
+}
+
+.shareX99_h3Wrap h3 {
+    text-align: left;
+    display: inline-block;
+    margin-top: 12.4px;
+}
+
+.WISH-YOU {
+  height: 12px;
+  font-size: 11px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  text-align: center;
+  color: #999999;
+}
+
+.A-Happy-Diwali {
+  display: inline-block;
+  height: 16px;
+  font-size: 14px;
+  font-weight: 500;
+  font-style: normal;
+  font-stretch: normal;
+  text-align: center;
+  color: #666666;
+}
+
+.shareThisPageOn_Wrap{
+  float: none;
+  width: 278px;
+  height: 60px;
+  margin: 0 auto;
+
+  @include breakpoint(480px){
+    width: 325px;
+  }
+
+  @include breakpoint(768px){
+    float: right;
+  }
+}
+
+.innerWrap_shareThisPageOn {
+  float: left;
+}
+
+.shadowInsetX_social,
+.shareIconX_share {
+    -webkit-box-shadow: inset 0px -9px 9px 0px #3c56a1;
+    -moz-box-shadow: inset 0px -9px 9px 0px #3c56a1;
+    box-shadow: inset 0px -9px 9px 0px #3c56a1
+}
+
+.shareIconX_icoWrapper {
+    float: left;
+    position: relative;
+    @extend .verticalCenterX99;
+}
+
+.shareIconX_icoWrapper ul {
+    list-style: none;
+    float: left
+}
+
+
+.shareIconX_icoWrapper ul li {
+    width: 42px;
+    height: 42px;
+    border-radius: 2px;
+    float: left;
+    text-align: center;
+    -webkit-transition: all 0.2s cubic-bezier(0.86, 0.065, 0.45, 0.895);
+    -moz-transition: all 0.2s cubic-bezier(0.86, 0.065, 0.45, 0.895);
+    transition: all 0.2s cubic-bezier(0.86, 0.065, 0.45, 0.895);
+    cursor: pointer;
+}
+
+.shareIconX_icoWrapper ul li:hover {
+  & {
+    background: #059ff5;
+  }
+}
+
+.facebookX:hover {
+  .sprite_diwaliF_facebook {
+    background-position: -35px -5px;
+  }
+}
+
+.googleplusX:hover {
+  .sprite_diwaliF_google {
+    background-position: -35px -35px;
+  }
+}
+
+.pinterestX:hover {
+  .sprite_diwaliF_pinterest {
+    background-position: -65px -35px;
+  }
+}
+
+.twitterX:hover {
+  .sprite_diwaliF_twitter {
+    background-position: -35px -65px;
+  }
+}

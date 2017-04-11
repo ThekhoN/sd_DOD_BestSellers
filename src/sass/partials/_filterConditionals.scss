@@ -1,0 +1,21 @@
+#AllOffers_filterX99 {
+  .offerUnits_4_2 {
+
+    &:nth-child(2n){
+      border-right: 1px solid $separator;
+    }
+  }
+}
+
+.topNavX99_Wrapper {
+  margin-bottom: 6px !important;
+}
+
+ul#singleExChangeBannerX99, ul#singleExChangeBannerX99 li.BannerX99_unit {
+       margin-bottom: 0;
+       padding: 0;
+}
+ul#singleExChangeBannerX99 li.BannerX99_unit  {
+ border-bottom: 1px solid #EBEAEA;
+ margin-bottom: 0 !important;
+}

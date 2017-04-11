@@ -1,0 +1,90 @@
+$minW_wrapper: 300px;
+$pad_left: 10px;
+$mOffset: 16px;
+
+
+span.captionSpan {
+  display: inline-block;
+}
+
+.caption__container {
+  @extend .contRofl_clr;
+  padding: 1.6em 0;
+  text-align: center;
+  position: relative;
+
+  &.captionWrapper_padLess_mobile {
+    @include breakpoint(max-width 768px){
+      padding: 0.8em 0 0.6em 0;
+    }
+  }
+
+
+  h3 {
+    font-size: 1em;
+    line-height: 1.2;
+    color: white;
+    font-weight: normal;
+    text-align: center;
+    padding-left: 20px;
+    box-sizing: border-box;
+    position: relative;
+    width: 100%;
+    float: left;
+
+    @include breakpoint(640px){
+      font-size: 1.5em;
+      //text-align: center;
+    }
+
+    @include breakpoint(1664px){
+      font-size: 1.8em;
+    }
+
+    span.captionSpanX99 {
+      width: $minW_wrapper;
+      box-sizing: border-box;
+      float: left;
+      display: inline-block !important;
+      text-align: left;
+      margin-left: $mOffset;
+
+      &.hideX99 {
+        display: none !important;
+      }
+
+      &.showX99 {
+        display: inline-block !important;
+      }
+
+
+      @include breakpoint(480px){
+        float: none;
+        margin: 0 auto;
+        //width: $minW_wrapper;
+        width: 100%;
+        text-align: center;
+      }
+
+    }
+  }
+
+}
+
+.bg--gradient-orange-to-red {
+  background: #a5a6a7;
+  background-image: linear-gradient(274deg, #dd5e89, #f7bb97);
+}
+
+.bg--gradient-green-to-blue {
+  background: #a5a6a7;
+  background-image: linear-gradient(97deg, #64ecba, #008de7);
+}
+
+.gradient_non_transparent {
+  background: $wrapperBG;
+
+  .captionSpanX99 {
+    color: $textCol;
+  }
+}

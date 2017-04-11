@@ -1,0 +1,46 @@
+.buttonModalTrigger {
+  background: rgba(255, 255, 255, 0.9);
+  display: inline-block;
+  color: #bc1958;
+  border-radius: 3px;
+  padding: 18px 40px;
+  letter-spacing: 0px;
+  font-size: 16px;
+  text-transform: capitalize;
+  cursor: pointer;
+  position: relative;
+  top: 50%;
+
+  @include transform(translateY(-50%));
+  @include transition(all 0.2s ease-out);
+
+
+  @include breakpoint(640px){
+    box-shadow: 0 2px 2px 0 rgba(0,0,0,0.14), 0 1px 5px 0 rgba(0,0,0,0.12), 0 3px 1px -2px rgba(0,0,0,0.2);
+    top:0;
+    @include transform(translateY(0));
+    position: absolute;
+    right: 0;
+    padding: 10px 20px;
+    letter-spacing: 1px;
+    font-size: 18px;
+  }
+
+  @include breakpoint(1024px){
+    @include transition(background 0.3s linear);
+  }
+
+  &:hover {
+    @include breakpoint(1024px){
+      background: rgba(255, 255, 255, 1);
+    }
+  }
+
+  /*
+  display: none;
+  &.true {
+    display:inline-block;
+  }
+  */
+
+}
