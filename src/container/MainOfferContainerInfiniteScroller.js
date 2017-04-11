@@ -52,19 +52,13 @@ const landingPageName = preUrl.slice((preUrl.indexOf(landingPageQueryStr)) + lan
 // console.log('landingPageName: ', landingPageName);
 const eventIds=['superDod', 'DealofDayOffers'];
 
-
-
 // live
-const countlimit = 200; //510 max
+const countlimit = 300; //510 max
 const scrollInfLoadThreshold = 45;
-// test
-// const countlimit = 510; //510 max
 const firstStart = 0;
 const count = 36;
 let nextStart = count;
 let firstReqUrl = `${preUrl}&start=${firstStart}&count=${count}`;
-//console.log('firstReqUrl: ', firstReqUrl);
-//nextUrl = `https://mobileapi.snapdeal.com/service/generic/get/getGenericOffer?landingPage=deal-of-the-day&start=${countStart+10}&count=${incrementCount+10}`;
 const getNextReqUrl = () => {
   const nextUrl = `${preUrl}&start=${nextStart}&count=${count}`;
   nextStart = nextStart + count; //prev nextStart + count + 1;
@@ -576,6 +570,10 @@ class MainOfferContainerInfiniteScroller extends Component {
           .then( response => {
           const responseData = response.data;
           const _data = responseData.genericOfferItems;
+          if(_data.length < 1){
+            console.log(`no data found, update csv " -_- ?`);
+            return;
+          }
           this.setState(
             {
               data: _data,
@@ -638,7 +636,6 @@ class MainOfferContainerInfiniteScroller extends Component {
                       </ul>
                     </OfferContainerWrapperDoD>
                     </InnerCardSectionXWrap>
-                    {/* {this.state.mobileView && this.state.firstLoadComplete && this.renderSuperDodOffersWaypoint()} */}
                   </SectionX>
                 )
               }
@@ -646,7 +643,6 @@ class MainOfferContainerInfiniteScroller extends Component {
                 return (
                   <div className='preact-ref-div-dod-offers' ref={node=>{this.dodOffers = node}}>
                   <SectionX id="DealofDayOffers" eventId="DealofDayOffers">
-                    {/* {this.state.mobileView && this.state.firstLoadComplete && this.renderDODOffersWaypoint()} */}
                     <CaptionWrapperWithButton caption='Best Sellers' eventId={eventId} stylingClass="bg--gradient-green-to-blue">
                       {this.state.filterOn && <div className={` filterMainModalContainer ${this.state.modalOpen} ${this.state.filterControl} ${modalDisableClass} `}>
                         {this.state.modalOpen && <FilterMainDOD
@@ -676,9 +672,6 @@ class MainOfferContainerInfiniteScroller extends Component {
                       </OfferContainerWrapperNormal>
                     </InnerCardSectionXWrap>
                     <SocialShareComponent/>
-                    <div style={{'float':'left'}}>
-                      {/* {this.renderSocialShareComponentWaypoint()} */}
-                    </div>
                   </SectionX>
                   </div>
                 )
