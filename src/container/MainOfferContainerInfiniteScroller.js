@@ -54,9 +54,9 @@ const eventIds=['superDod', 'DealofDayOffers'];
 
 // live
 const countlimit = 300; //510 max
-const scrollInfLoadThreshold = 45;
+const scrollInfLoadThreshold = 55; //prev 45
 const firstStart = 0;
-const count = 36;
+const count = 50;
 let nextStart = count;
 let firstReqUrl = `${preUrl}&start=${firstStart}&count=${count}`;
 const getNextReqUrl = () => {
@@ -621,25 +621,26 @@ class MainOfferContainerInfiniteScroller extends Component {
             <div className="main-offer-container" >
             {!this.state.mobileView && <SectionX/>}
             {eventIds.map(eventId=>{
-              if(eventId.indexOf('superDod') > -1){
-                return (
-                  <SectionX id={eventId}>
-                    <InnerCardSectionXWrap>
-                    <CaptionWrapper caption={captions[eventId]} eventId={eventId} stylingClass="bg--gradient-orange-to-red"/>
-                    <OfferContainerWrapperDoD>
-                      <ul className='responsive-font-size--reset-0 responsive-layout--centered'>
-                        {this.state.showPlaceholder && <PlaceholderSuperDealOfferUnitGroup2x2/>}
-                        {data.filter(offer=>(
-                          offer.eventId === eventId))
-                          .map((thisOffer, i) => (<OfferUnitLi item={thisOffer} i={i}/>))
-                        }
-                      </ul>
-                    </OfferContainerWrapperDoD>
-                    </InnerCardSectionXWrap>
-                  </SectionX>
-                )
-              }
-              else if(eventId.indexOf('DealofDayOffers') > -1){
+              // Disable DOD
+              // if(eventId.indexOf('superDod') > -1){
+              //   return (
+              //     <SectionX id={eventId}>
+              //       <InnerCardSectionXWrap>
+              //       <CaptionWrapper caption={captions[eventId]} eventId={eventId} stylingClass="bg--gradient-orange-to-red"/>
+              //       <OfferContainerWrapperDoD>
+              //         <ul className='responsive-font-size--reset-0 responsive-layout--centered'>
+              //           {this.state.showPlaceholder && <PlaceholderSuperDealOfferUnitGroup2x2/>}
+              //           {data.filter(offer=>(
+              //             offer.eventId === eventId))
+              //             .map((thisOffer, i) => (<OfferUnitLi item={thisOffer} i={i}/>))
+              //           }
+              //         </ul>
+              //       </OfferContainerWrapperDoD>
+              //       </InnerCardSectionXWrap>
+              //     </SectionX>
+              //   )
+              // }
+              if(eventId.indexOf('DealofDayOffers') > -1){
                 return (
                   <div className='preact-ref-div-dod-offers' ref={node=>{this.dodOffers = node}}>
                   <SectionX id="DealofDayOffers" eventId="DealofDayOffers">

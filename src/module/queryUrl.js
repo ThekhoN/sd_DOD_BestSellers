@@ -1,9 +1,9 @@
-////console.log('live...24 Jan 2017 v1');
-  //predefining url because app does not support window.location.href
+// DOD
+  // var liveURLx = 'deal-of-the-day';
 
-  var liveURLx = 'deal-of-the-day';
-  //var liveURLx = 'test-preact';
-  //var testOfferName = 'test-z666';
+// BestSellers
+  var liveURLx = 'test-z888';
+
   //local
   //var local_testURL = (window.admin && window.admin == 'true' ? '/admin' : '') + "csvData_mobileapi7.json";
   //live
