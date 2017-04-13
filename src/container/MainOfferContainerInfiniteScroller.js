@@ -172,6 +172,7 @@ class MainOfferContainerInfiniteScroller extends Component {
   }
   getDodOffsetTop(){
     // const dodOffersOffsetTopStart = this.dodOffers.offsetTop;
+    // console.log('run getDodOffsetTop. . .');
     const dodOffersOffsetTopStart = getOffset(this.dodOffers).top;
     const dodOffersOffsetTopEnd = dodOffersOffsetTopStart + this.dodOffers.offsetHeight;
     this.setState({
@@ -301,6 +302,10 @@ class MainOfferContainerInfiniteScroller extends Component {
     }
   }
   loadMoreInfiniteContent(){
+    if(this.state.isLoading){
+      // console.log('already loading. . .wait');
+      return ;
+    }
     this.checkSecondLoadComplete();
     if(nextStart > countlimit){
       this.setState({
@@ -328,6 +333,8 @@ class MainOfferContainerInfiniteScroller extends Component {
         this.setState({
           data: _nextData,
           isLoading: false
+        }, () => {
+          this.getDodOffsetTop();
         })
       })
       .catch( err => {
@@ -358,12 +365,8 @@ class MainOfferContainerInfiniteScroller extends Component {
             showPlaceholder: false,
             loadComplete: true,
             forceLoading: false
-          }, ()=>{
-            // console.log('loadCompleted, run getDodOffsetTop');
+          }, () =>{
             this.getDodOffsetTop();
-            // console.log('this.state.data: ', this.state.data);
-            // console.log('loadRemainingContent complete all offers. . .')
-            // console.log('No. of Offers: ', this.state.data.length);
           })
         })
         .catch(err => {
@@ -374,7 +377,6 @@ class MainOfferContainerInfiniteScroller extends Component {
         return;
       }
     }
-
   }
   renderInfiniteContent(){
     const {data, activeFilters} = this.state
@@ -539,6 +541,15 @@ class MainOfferContainerInfiniteScroller extends Component {
 
   }
   componentDidMount(){
+    /*
+    alert(`Ensure the following before build: \n
+      // 1. queryUrl default liveURLx is set correctly DOD/BestSellers \n
+      // 2. if DOD, superDod is uncommented in render \n
+      // 3. all console messages have been disabled \n
+      // 4. correct html is being used \n
+      // 5. this alert is disabled \n
+      `);
+    */
     this.getvwPortSize();
     this.getDodOffsetTop();
     this.updateStateMobileView()
@@ -622,24 +633,24 @@ class MainOfferContainerInfiniteScroller extends Component {
             {!this.state.mobileView && <SectionX/>}
             {eventIds.map(eventId=>{
               // Disable DOD
-              // if(eventId.indexOf('superDod') > -1){
-              //   return (
-              //     <SectionX id={eventId}>
-              //       <InnerCardSectionXWrap>
-              //       <CaptionWrapper caption={captions[eventId]} eventId={eventId} stylingClass="bg--gradient-orange-to-red"/>
-              //       <OfferContainerWrapperDoD>
-              //         <ul className='responsive-font-size--reset-0 responsive-layout--centered'>
-              //           {this.state.showPlaceholder && <PlaceholderSuperDealOfferUnitGroup2x2/>}
-              //           {data.filter(offer=>(
-              //             offer.eventId === eventId))
-              //             .map((thisOffer, i) => (<OfferUnitLi item={thisOffer} i={i}/>))
-              //           }
-              //         </ul>
-              //       </OfferContainerWrapperDoD>
-              //       </InnerCardSectionXWrap>
-              //     </SectionX>
-              //   )
-              // }
+              if(eventId.indexOf('superDod') > -1){
+                return (
+                  <SectionX id={eventId}>
+                    <InnerCardSectionXWrap>
+                    <CaptionWrapper caption={captions[eventId]} eventId={eventId} stylingClass="bg--gradient-orange-to-red"/>
+                    <OfferContainerWrapperDoD>
+                      <ul className='responsive-font-size--reset-0 responsive-layout--centered'>
+                        {this.state.showPlaceholder && <PlaceholderSuperDealOfferUnitGroup2x2/>}
+                        {data.filter(offer=>(
+                          offer.eventId === eventId))
+                          .map((thisOffer, i) => (<OfferUnitLi item={thisOffer} i={i}/>))
+                        }
+                      </ul>
+                    </OfferContainerWrapperDoD>
+                    </InnerCardSectionXWrap>
+                  </SectionX>
+                )
+              }
               if(eventId.indexOf('DealofDayOffers') > -1){
                 return (
                   <div className='preact-ref-div-dod-offers' ref={node=>{this.dodOffers = node}}>
