@@ -153,6 +153,7 @@ class MainOfferContainerInfiniteScroller extends Component {
     this.handleDisplayFilterControlOnScroll = this.handleDisplayFilterControlOnScroll.bind(this);
     this.checkSecondLoadComplete = this.checkSecondLoadComplete.bind(this);
     this.updateShowingShortlistConfim = this.updateShowingShortlistConfim.bind(this);
+    this.renderFixedLoader = this.renderFixedLoader.bind(this);
   }
   updateShowingShortlistConfim(updateBoolean){
     this.setState({
@@ -650,6 +651,13 @@ class MainOfferContainerInfiniteScroller extends Component {
   onLeaveDealOfDayOffers(){
     this.hideFilterControl()
   }
+  renderFixedLoader(){
+    const { firstLoadComplete, isLoading } = this.state;
+    if(firstLoadComplete){
+      return (<div className={`loader__container--fixed ${this.state.isLoading}`}><Loader/></div>)
+    }
+    //{this.state.firstLoadComplete && <div className={`loader__container--fixed ${this.state.isLoading}`}><Loader/></div>}
+  }
   render(){
     const {eventIds, captions} = this.props;
     const {data, forceLoading, isLoading} = this.state;
@@ -659,7 +667,8 @@ class MainOfferContainerInfiniteScroller extends Component {
     return (<div className={`preact-inner-app-container ${modalDisableClass}`}>
       {!this.state.mobileSite && this.state.showingShortlistConfim && <ShortlistConfirm/>}
       <div className='disable-overflow'></div>
-      {this.state.firstLoadComplete && <div className={`loader__container--fixed ${this.state.isLoading}`}><Loader/></div>}
+      {/* {this.state.firstLoadComplete && <div className={`loader__container--fixed ${this.state.isLoading}`}><Loader/></div>} */}
+      {this.renderFixedLoader()}
       <ModalOverlay active={this.state.modalOpen}
         handleModalClose={
           this.handleModalClose
