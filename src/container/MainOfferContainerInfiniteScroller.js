@@ -23,6 +23,7 @@ import FilterMainDOD from '../component/FilterMainDOD';
 import ModalOverlay from '../component/ModalOverlay';
 import Loader from '../component/Loader';
 import DealNotFound from '../component/DealNotFound';
+import { ShortlistConfirm } from '../component/WishlistIconComponents';
 
 //placeholder components
 import {OfferUnitLiPlaceholderGroup2x2} from '../component/OfferUnitLiPlaceholder';
@@ -84,6 +85,7 @@ class MainOfferContainerInfiniteScroller extends Component {
     this.state = {
       showPlaceholder: true,
       filterOn: true,
+      showingShortlistConfim: false,
       //
       forceLoading: false,
       remainingLoading: false,
@@ -115,9 +117,11 @@ class MainOfferContainerInfiniteScroller extends Component {
       },
       elemInVwPort: '',
       mobileView: false,
+      mobileSite: false,
       filterControl: 'hideFilterControl',//'hideFilterControl' //showFilterControl
     }
 
+    this.checkIfMobileSite = this.checkIfMobileSite.bind(this);
     this.loadMoreInfiniteContent = this.loadMoreInfiniteContent.bind(this);
     this.renderInfiniteContent = this.renderInfiniteContent.bind(this);
 
@@ -148,6 +152,18 @@ class MainOfferContainerInfiniteScroller extends Component {
     this.detectElemInVwPort = this.detectElemInVwPort.bind(this);
     this.handleDisplayFilterControlOnScroll = this.handleDisplayFilterControlOnScroll.bind(this);
     this.checkSecondLoadComplete = this.checkSecondLoadComplete.bind(this);
+    this.updateShowingShortlistConfim = this.updateShowingShortlistConfim.bind(this);
+  }
+  updateShowingShortlistConfim(updateBoolean){
+    this.setState({
+      showingShortlistConfim: updateBoolean
+    }, ()=> {
+      setTimeout(()=> {
+        this.setState({
+          showingShortlistConfim: !updateBoolean
+        });
+      }, 3000);
+    });
   }
   updateScrollY(){
     const currentScrollYValue = document.body.scrollTop || document.documentElement.scrollTop;
@@ -238,6 +254,20 @@ class MainOfferContainerInfiniteScroller extends Component {
         modalOpen: false
       })
     }
+  }
+  checkIfMobileSite(){
+    // check if msite
+    if(window.location.href.indexOf('m.snapdeal.com') > -1){
+      this.setState({
+          mobileSite: true
+      });
+    }
+    else {
+      this.setState({
+        mobileSite: false
+      });
+    }
+
   }
   updateStateMobileView(){
     const w = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth;
@@ -378,17 +408,17 @@ class MainOfferContainerInfiniteScroller extends Component {
       }
     }
   }
-  renderInfiniteContent(){
+  renderInfiniteContent(mobileSite){
     const {data, activeFilters} = this.state
 
     let activeOffersList; //array
     const dealofDayOffers = data.filter(offer => offer.eventId === 'DealofDayOffers')
-    activeOffersList = dealofDayOffers.map((thisOffer, i) => (<OfferUnitLi item={thisOffer} i={i}/>));
+    activeOffersList = dealofDayOffers.map((thisOffer, i) => (<OfferUnitLi dispatchToMainShowingShortlistConfirm={this.updateShowingShortlistConfim} showingShortlistConfim={this.state.showingShortlistConfim} mobileSite={this.state.mobileSite} item={thisOffer} i={i}/>));
 
     if(activeFilters.length > 0) {
       const activeData = getActiveItems(activeFilters, dealofDayOffers)
       if(activeData.length > 0) {
-        activeOffersList = activeData.map((thisOffer, i) => (<OfferUnitLi item={thisOffer} i={i}/>))
+        activeOffersList = activeData.map((thisOffer, i) => (<OfferUnitLi dispatchToMainShowingShortlistConfirm={this.updateShowingShortlistConfim} showingShortlistConfim={this.state.showingShortlistConfim} mobileSite={this.state.mobileSite} item={thisOffer} i={i}/>))
       }
       else {
         activeOffersList = <DealNotFound failedFilter={this.state.activeFilters}/>
@@ -541,6 +571,9 @@ class MainOfferContainerInfiniteScroller extends Component {
 
   }
   componentDidMount(){
+    /*******************************************/
+      //  PREBUILD CHECKLIST
+    /*******************************************/
     /*
     alert(`Ensure the following before build: \n
       // 1. queryUrl default liveURLx is set correctly DOD/BestSellers \n
@@ -550,6 +583,8 @@ class MainOfferContainerInfiniteScroller extends Component {
       // 5. this alert is disabled \n
       `);
     */
+    this.checkIfMobileSite();
+
     this.getvwPortSize();
     this.getDodOffsetTop();
     this.updateStateMobileView()
@@ -622,6 +657,7 @@ class MainOfferContainerInfiniteScroller extends Component {
     // {this.state.isLoading && <div className='loader-x99_wrapper'><Loader/></div>}
     // {!this.state.modalOpen && this.state.forceLoading && <div className='loader-x99_wrapper'><Loader/></div>}
     return (<div className={`preact-inner-app-container ${modalDisableClass}`}>
+      {!this.state.mobileSite && this.state.showingShortlistConfim && <ShortlistConfirm/>}
       <div className='disable-overflow'></div>
       {this.state.firstLoadComplete && <div className={`loader__container--fixed ${this.state.isLoading}`}><Loader/></div>}
       <ModalOverlay active={this.state.modalOpen}
@@ -643,7 +679,7 @@ class MainOfferContainerInfiniteScroller extends Component {
                         {this.state.showPlaceholder && <PlaceholderSuperDealOfferUnitGroup2x2/>}
                         {data.filter(offer=>(
                           offer.eventId === eventId))
-                          .map((thisOffer, i) => (<OfferUnitLi item={thisOffer} i={i}/>))
+                          .map((thisOffer, i) => (<OfferUnitLi dispatchToMainShowingShortlistConfirm={this.updateShowingShortlistConfim} showingShortlistConfim={this.state.showingShortlistConfim} mobileSite={this.state.mobileSite} item={thisOffer} i={i}/>))
                         }
                       </ul>
                     </OfferContainerWrapperDoD>
