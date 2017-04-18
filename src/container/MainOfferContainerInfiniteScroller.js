@@ -41,11 +41,6 @@ import getOffset from '../module/getOffset';
 const preUrl = queryUrl();
 // console.log('preUrl: ', preUrl);
 
-// test
-// const preUrl = 'https://mobileapi.snapdeal.com/service/generic/get/getGenericOffer?landingPage=test-z888'
-
-//const url = 'https://mobileapi.snapdeal.com/service/generic/get/getGenericOffer?landingPage=deal-of-the-day&start=0&count=150';
-//const eventIds=['bankOfferBannerX99', 'superDod', 'DealofDayOffers', 'BlockbusterDeals'];
 
 const landingPageQueryStr = 'landingPage=';
 const landingPageName = preUrl.slice((preUrl.indexOf(landingPageQueryStr)) + landingPageQueryStr.length);
@@ -73,7 +68,6 @@ const getRemainingReqUrl = (countlimit, nextStart) => {
 
 // +++++ /getNextReqUrl +++++ //
 const forceLoadAllOffersURL = `https://mobileapi.snapdeal.com/service/generic/get/getGenericOffer?landingPage=${landingPageName}&start=0&count=${countlimit}`;
-// const forceLoadAllOffersURL = 'https://mobileapi.snapdeal.com/service/generic/get/getGenericOffer?landingPage=deal-of-the-day&start=0&count=${countlimit}';
 
 class MainOfferContainerInfiniteScroller extends Component {
   constructor(props){
@@ -196,8 +190,7 @@ class MainOfferContainerInfiniteScroller extends Component {
       offsetTop: {
         ...this.state.offsetTop,
         dodOffers:  dodOffersOffsetTopStart,
-        dodOffersEnd: dodOffersOffsetTopEnd,
-
+        dodOffersEnd: dodOffersOffsetTopEnd
       }
     });
   }
@@ -288,7 +281,7 @@ class MainOfferContainerInfiniteScroller extends Component {
   handleModalOpen(){
     const {loadComplete, mobileView} = this.state;
 
-    if(!mobileView){
+    if(!mobileView ){
       this.scrollToDodOffers();
     }
 
@@ -300,7 +293,7 @@ class MainOfferContainerInfiniteScroller extends Component {
       this.setState({
         modalOpen: true,
       });
-    }, 250);
+    }, 777);
 
   }
   handleModalClose(){
@@ -584,8 +577,8 @@ class MainOfferContainerInfiniteScroller extends Component {
       // 5. this alert is disabled \n
       `);
     */
-    this.checkIfMobileSite();
 
+    this.checkIfMobileSite();
     this.getvwPortSize();
     this.getDodOffsetTop();
     this.updateStateMobileView()
@@ -662,12 +655,9 @@ class MainOfferContainerInfiniteScroller extends Component {
     const {eventIds, captions} = this.props;
     const {data, forceLoading, isLoading} = this.state;
     const modalDisableClass = forceLoading || isLoading ? 'disableModal' : 'enableModal';
-    // {this.state.isLoading && <div className='loader-x99_wrapper'><Loader/></div>}
-    // {!this.state.modalOpen && this.state.forceLoading && <div className='loader-x99_wrapper'><Loader/></div>}
     return (<div className={`preact-inner-app-container ${modalDisableClass}`}>
       {!this.state.mobileSite && this.state.showingShortlistConfim && <ShortlistConfirm/>}
       <div className='disable-overflow'></div>
-      {/* {this.state.firstLoadComplete && <div className={`loader__container--fixed ${this.state.isLoading}`}><Loader/></div>} */}
       {this.renderFixedLoader()}
       <ModalOverlay active={this.state.modalOpen}
         handleModalClose={
@@ -675,27 +665,29 @@ class MainOfferContainerInfiniteScroller extends Component {
         }/>
       <MaxWidthContainer>
             <div className="main-offer-container" >
-            {!this.state.mobileView && <SectionX/>}
+            {/* {!this.state.mobileView && <SectionX/>} */}
             {eventIds.map(eventId=>{
-              // Disable DOD
-              if(eventId.indexOf('superDod') > -1){
-                return (
-                  <SectionX id={eventId}>
-                    <InnerCardSectionXWrap>
-                    <CaptionWrapper caption={captions[eventId]} eventId={eventId} stylingClass="bg--gradient-orange-to-red"/>
-                    <OfferContainerWrapperDoD>
-                      <ul className='responsive-font-size--reset-0 responsive-layout--centered'>
-                        {this.state.showPlaceholder && <PlaceholderSuperDealOfferUnitGroup2x2/>}
-                        {data.filter(offer=>(
-                          offer.eventId === eventId))
-                          .map((thisOffer, i) => (<OfferUnitLi dispatchToMainShowingShortlistConfirm={this.updateShowingShortlistConfim} showingShortlistConfim={this.state.showingShortlistConfim} mobileSite={this.state.mobileSite} item={thisOffer} i={i}/>))
-                        }
-                      </ul>
-                    </OfferContainerWrapperDoD>
-                    </InnerCardSectionXWrap>
-                  </SectionX>
-                )
-              }
+              /*
+              Disable DOD incase BestSellers
+              */
+              // if(eventId.indexOf('superDod') > -1){
+              //   return (
+              //     <SectionX id={eventId}>
+              //       <InnerCardSectionXWrap>
+              //       <CaptionWrapper caption={captions[eventId]} eventId={eventId} stylingClass="bg--gradient-orange-to-red"/>
+              //       <OfferContainerWrapperDoD>
+              //         <ul className='responsive-font-size--reset-0 responsive-layout--centered'>
+              //           {this.state.showPlaceholder && <PlaceholderSuperDealOfferUnitGroup2x2/>}
+              //           {data.filter(offer=>(
+              //             offer.eventId === eventId))
+              //             .map((thisOffer, i) => (<OfferUnitLi dispatchToMainShowingShortlistConfirm={this.updateShowingShortlistConfim} showingShortlistConfim={this.state.showingShortlistConfim} mobileSite={this.state.mobileSite} item={thisOffer} i={i}/>))
+              //           }
+              //         </ul>
+              //       </OfferContainerWrapperDoD>
+              //       </InnerCardSectionXWrap>
+              //     </SectionX>
+              //   )
+              // }
               if(eventId.indexOf('DealofDayOffers') > -1){
                 return (
                   <div className='preact-ref-div-dod-offers' ref={node=>{this.dodOffers = node}}>
@@ -734,7 +726,6 @@ class MainOfferContainerInfiniteScroller extends Component {
                 )
               }
             }
-
               )}
         </div>
       </MaxWidthContainer>

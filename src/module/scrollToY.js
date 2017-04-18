@@ -37,7 +37,7 @@ function scrollToY(valueTopOffset, speed, easing) {
   // easing: easing equation to use
   var scrollY = window.scrollY || document.documentElement.scrollTop,
       valueTopOffset = valueTopOffset || 0,
-      speed = speed || 2000,
+      speed = speed || 666,
       easing = easing || 'easeOutSine',
       currentTime = 0;
   var time = Math.max(.1, Math.min(Math.abs(scrollY - valueTopOffset) / speed, .8));

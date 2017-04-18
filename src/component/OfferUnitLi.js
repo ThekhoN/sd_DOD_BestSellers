@@ -16,7 +16,7 @@ import axios from 'axios';
 const ADD_WISHLIST_URL = 'https://www.snapdeal.com/wishlist/add?pog';
 const REMOVE_WISHLIST_URL = 'https://www.snapdeal.com/wishlist/remove?pog';
 const WISHLIST_URL = 'https://www.snapdeal.com/mywishlist';
-const pogid = '347830397';
+// const pogid = '347830397';
 
 // OfferUnitLi Component
 export default class OfferUnitLi extends Component {
@@ -38,13 +38,14 @@ export default class OfferUnitLi extends Component {
     const { offerState, pogId } = this.state;
     if(offerState !== 'active'){
       /* local test */
+      // console.log('req pogId: ', pogId);
       // this.setState({
       //       offerState: 'active'
       //     }, ()=> {
       //       this.props.dispatchToMainShowingShortlistConfirm(true);
       //     });
       /* live */
-      axios.get(`${ADD_WISHLIST_URL}=${pogid}`)
+      axios.get(`${ADD_WISHLIST_URL}=${pogId}`)
         .then( response => {
           this.setState({
             offerState: 'active'
@@ -62,7 +63,7 @@ export default class OfferUnitLi extends Component {
       //   offerState: 'hovered'
       // });
       /* live */
-      axios.get(`${REMOVE_WISHLIST_URL}=${pogid}`)
+      axios.get(`${REMOVE_WISHLIST_URL}=${pogId}`)
         .then( response => {
           this.setState({
             offerState: 'hovered'
