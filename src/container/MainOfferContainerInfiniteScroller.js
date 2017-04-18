@@ -577,7 +577,6 @@ class MainOfferContainerInfiniteScroller extends Component {
       // 5. this alert is disabled \n
       `);
     */
-
     this.checkIfMobileSite();
     this.getvwPortSize();
     this.getDodOffsetTop();
@@ -665,29 +664,29 @@ class MainOfferContainerInfiniteScroller extends Component {
         }/>
       <MaxWidthContainer>
             <div className="main-offer-container" >
-            {/* {!this.state.mobileView && <SectionX/>} */}
             {eventIds.map(eventId=>{
               /*
               Disable DOD incase BestSellers
               */
-              // if(eventId.indexOf('superDod') > -1){
-              //   return (
-              //     <SectionX id={eventId}>
-              //       <InnerCardSectionXWrap>
-              //       <CaptionWrapper caption={captions[eventId]} eventId={eventId} stylingClass="bg--gradient-orange-to-red"/>
-              //       <OfferContainerWrapperDoD>
-              //         <ul className='responsive-font-size--reset-0 responsive-layout--centered'>
-              //           {this.state.showPlaceholder && <PlaceholderSuperDealOfferUnitGroup2x2/>}
-              //           {data.filter(offer=>(
-              //             offer.eventId === eventId))
-              //             .map((thisOffer, i) => (<OfferUnitLi dispatchToMainShowingShortlistConfirm={this.updateShowingShortlistConfim} showingShortlistConfim={this.state.showingShortlistConfim} mobileSite={this.state.mobileSite} item={thisOffer} i={i}/>))
-              //           }
-              //         </ul>
-              //       </OfferContainerWrapperDoD>
-              //       </InnerCardSectionXWrap>
-              //     </SectionX>
-              //   )
-              // }
+              if(eventId.indexOf('superDod') > -1){
+                return (
+                  <SectionX id={eventId}>
+                    {!this.state.mobileView && <SectionX/>}
+                    <InnerCardSectionXWrap>
+                    <CaptionWrapper caption={captions[eventId]} eventId={eventId} stylingClass="bg--gradient-orange-to-red"/>
+                    <OfferContainerWrapperDoD>
+                      <ul className='responsive-font-size--reset-0 responsive-layout--centered'>
+                        {this.state.showPlaceholder && <PlaceholderSuperDealOfferUnitGroup2x2/>}
+                        {data.filter(offer=>(
+                          offer.eventId === eventId))
+                          .map((thisOffer, i) => (<OfferUnitLi dispatchToMainShowingShortlistConfirm={this.updateShowingShortlistConfim} showingShortlistConfim={this.state.showingShortlistConfim} mobileSite={this.state.mobileSite} item={thisOffer} i={i}/>))
+                        }
+                      </ul>
+                    </OfferContainerWrapperDoD>
+                    </InnerCardSectionXWrap>
+                  </SectionX>
+                )
+              }
               if(eventId.indexOf('DealofDayOffers') > -1){
                 return (
                   <div className='preact-ref-div-dod-offers' ref={node=>{this.dodOffers = node}}>

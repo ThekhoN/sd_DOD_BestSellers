@@ -16,7 +16,6 @@ import axios from 'axios';
 const ADD_WISHLIST_URL = 'https://www.snapdeal.com/wishlist/add?pog';
 const REMOVE_WISHLIST_URL = 'https://www.snapdeal.com/wishlist/remove?pog';
 const WISHLIST_URL = 'https://www.snapdeal.com/mywishlist';
-// const pogid = '347830397';
 
 // OfferUnitLi Component
 export default class OfferUnitLi extends Component {
@@ -33,45 +32,60 @@ export default class OfferUnitLi extends Component {
     this.inactivateOfferState = this.inactivateOfferState.bind(this);
   }
   activateOfferState(){
-    // console.log('was clicked. . .');
+    // if not on snapdeal platform return
+    if(!(window.location.href.indexOf('snapdeal.com') > -1)){
+      console.log('not on snapdeal platform. . .');
+      return ;
+    }
+
     const { showShortlistConfim } = this.props;
     const { offerState, pogId } = this.state;
-    if(offerState !== 'active'){
-      /* local test */
-      // console.log('req pogId: ', pogId);
-      // this.setState({
-      //       offerState: 'active'
-      //     }, ()=> {
-      //       this.props.dispatchToMainShowingShortlistConfirm(true);
-      //     });
-      /* live */
-      axios.get(`${ADD_WISHLIST_URL}=${pogId}`)
-        .then( response => {
-          this.setState({
-            offerState: 'active'
-          }, ()=> {
-            this.props.dispatchToMainShowingShortlistConfirm(true);
-          });
-        })
-        .catch(err => {
-          console.log('error in ADD_WISHLIST axios: ', err);
-      });
+
+    // if logged in
+    if(Snapdeal.Cookie.get('lu') === 'true'){
+      if(offerState !== 'active'){
+        /* local test */
+        // console.log('req pogId: ', pogId);
+        // this.setState({
+        //       offerState: 'active'
+        //     }, ()=> {
+        //       this.props.dispatchToMainShowingShortlistConfirm(true);
+        //     });
+        /* live */
+        axios.get(`${ADD_WISHLIST_URL}=${pogId}`)
+          .then( response => {
+            this.setState({
+              offerState: 'active'
+            }, ()=> {
+              this.props.dispatchToMainShowingShortlistConfirm(true);
+            });
+          })
+          .catch(err => {
+            console.log('error in ADD_WISHLIST axios: ', err);
+        });
+      }
+      else {
+        /* local test */
+        // this.setState({
+        //   offerState: 'hovered'
+        // });
+        /* live */
+        axios.get(`${REMOVE_WISHLIST_URL}=${pogId}`)
+          .then( response => {
+            this.setState({
+              offerState: 'hovered'
+            });
+          })
+          .catch(err => {
+            console.log('error in REMOVE_WISHLIST axios: ', err);
+        });
+      }
     }
+    // not logged in, showRegister to log in
     else {
-      /* local test */
-      // this.setState({
-      //   offerState: 'hovered'
-      // });
-      /* live */
-      axios.get(`${REMOVE_WISHLIST_URL}=${pogId}`)
-        .then( response => {
-          this.setState({
-            offerState: 'hovered'
-          });
-        })
-        .catch(err => {
-          console.log('error in REMOVE_WISHLIST axios: ', err);
-      });
+      if(window.location.href.indexOf('www.snapdeal.com') > 1){
+        window.showRegister();
+      }
     }
   }
   hoverethOfferState(){
