@@ -672,11 +672,19 @@ class MainOfferContainerInfiniteScroller extends Component {
     this.hideFilterControl()
   }
   renderFixedLoader(){
-    const { firstLoadComplete, isLoading } = this.state;
-    if(firstLoadComplete){
-      return (<div className={`loader__container--fixed ${this.state.isLoading}`}><Loader/></div>)
+    const { isLoading } = this.state;
+    class LoadingComponent extends Component {
+      shouldComponentUpdate(nextProps, nextState){
+        return nextProps.isLoading !== this.props.isLoading;
+      }
+      render(){
+        const {isLoading} = this.props;
+        return (
+          <div className={`loader__container--fixed ${isLoading}`}><Loader/></div>
+        )
+      }
     }
-    //{this.state.firstLoadComplete && <div className={`loader__container--fixed ${this.state.isLoading}`}><Loader/></div>}
+    return (<LoadingComponent isLoading={isLoading}/>);
   }
   render(){
     const {eventIds, captions} = this.props;
@@ -685,7 +693,7 @@ class MainOfferContainerInfiniteScroller extends Component {
     return (<div className={`preact-inner-app-container ${modalDisableClass}`}>
       {!this.state.mobileSite && this.state.showingShortlistConfim && <ShortlistConfirm/>}
       <div className='disable-overflow'></div>
-      {this.renderFixedLoader()}
+      {this.state.firstLoadComplete && this.renderFixedLoader()}
       <ModalOverlay active={this.state.modalOpen}
         handleModalClose={
           this.handleModalClose
