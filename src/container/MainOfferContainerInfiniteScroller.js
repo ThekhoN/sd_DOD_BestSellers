@@ -80,6 +80,7 @@ class MainOfferContainerInfiniteScroller extends Component {
       showPlaceholder: true,
       filterOn: true,
       showingShortlistConfim: false,
+      dodOffersOffsetTopRelVwport: 0,
       //
       forceLoading: false,
       remainingLoading: false,
@@ -118,6 +119,7 @@ class MainOfferContainerInfiniteScroller extends Component {
     this.checkIfMobileSite = this.checkIfMobileSite.bind(this);
     this.loadMoreInfiniteContent = this.loadMoreInfiniteContent.bind(this);
     this.renderInfiniteContent = this.renderInfiniteContent.bind(this);
+    this.updateShowingShortlistConfim = this.updateShowingShortlistConfim.bind(this);
 
     //new filter modal handlers
     this.handleModalOpen = this.handleModalOpen.bind(this);
@@ -146,8 +148,8 @@ class MainOfferContainerInfiniteScroller extends Component {
     this.detectElemInVwPort = this.detectElemInVwPort.bind(this);
     this.handleDisplayFilterControlOnScroll = this.handleDisplayFilterControlOnScroll.bind(this);
     this.checkSecondLoadComplete = this.checkSecondLoadComplete.bind(this);
-    this.updateShowingShortlistConfim = this.updateShowingShortlistConfim.bind(this);
     this.renderFixedLoader = this.renderFixedLoader.bind(this);
+    this.getdodOffersOffsetTopRelVwport = this.getdodOffersOffsetTopRelVwport.bind(this);
   }
   updateShowingShortlistConfim(updateBoolean){
     this.setState({
@@ -158,6 +160,17 @@ class MainOfferContainerInfiniteScroller extends Component {
           showingShortlistConfim: !updateBoolean
         });
       }, 3000);
+    });
+  }
+  getdodOffersOffsetTopRelVwport(){
+    let dodOffersOffsetTopRelVwport = 0;
+    if(this.dodOffers){
+      const dodOffersOffsetRelVwport = this.dodOffers.getBoundingClientRect();
+      const dodOffersOffsetTopRelVwport = dodOffersOffsetRelVwport.top;
+    }
+
+    this.setState({
+      dodOffersOffsetTopRelVwport
     });
   }
   updateScrollY(){
@@ -222,9 +235,14 @@ class MainOfferContainerInfiniteScroller extends Component {
       }
     });
   }
-  scrollToDodOffers(){
+  scrollToDodOffers(callback){
     const dodOffersOffsetTop = this.state.offsetTop.dodOffers
-    scrollToY(dodOffersOffsetTop - 70);
+    // scrollToY accepts 4 args - offsetValue, speed, 'easing', callback ~ check '../module/scrollToY.js'
+    scrollToY(dodOffersOffsetTop - 70, 1000, 'easeInOutSine', ()=>{
+      if(callback){
+        callback();
+      }
+    });
   }
   jumpToDodOffers(){
     const dodOffersOffsetTop = this.state.offsetTop.dodOffers
@@ -280,21 +298,26 @@ class MainOfferContainerInfiniteScroller extends Component {
   }
   handleModalOpen(){
     const {loadComplete, mobileView} = this.state;
-
+    // if not mobile
     if(!mobileView ){
-      this.scrollToDodOffers();
+      this.scrollToDodOffers(()=>{
+        if(!this.state.loadComplete){
+          this.loadRemainingContent();
+        }
+        this.setState({
+          modalOpen: true
+        });
+      });
     }
-
-    //this.jumpToDodOffers();
-    setTimeout(()=>{
+    // if mobile
+    else {
       if(!loadComplete) {
         this.loadRemainingContent();
       }
       this.setState({
         modalOpen: true,
       });
-    }, 777);
-
+    }
   }
   handleModalClose(){
     const {loadComplete} = this.state
@@ -555,6 +578,7 @@ class MainOfferContainerInfiniteScroller extends Component {
 
   }
   onScrollRunEvents(){
+    this.getdodOffersOffsetTopRelVwport();
     const { loadComplete } = this.state;
     if(!loadComplete){
       this.getOffsetTopOfdetectorInfLoadStart(); //recalc after every next load and not on every scroll
@@ -571,12 +595,14 @@ class MainOfferContainerInfiniteScroller extends Component {
     /*
     alert(`Ensure the following before build: \n
       // 1. queryUrl default liveURLx is set correctly DOD/BestSellers \n
-      // 2. if DOD, superDod is uncommented in render \n
-      // 3. all console messages have been disabled \n
-      // 4. correct html is being used \n
-      // 5. this alert is disabled \n
+      // 2. Ensure Header is correctly set - Best Sellers used for Best Sellers && Deals of the Day for DOD \n
+      // 3. if DOD, superDod is uncommented in render \n
+      // 4. all console messages have been disabled \n
+      // 5. correct html is being used \n
+      // 6. this alert is disabled \n
       `);
     */
+
     this.checkIfMobileSite();
     this.getvwPortSize();
     this.getDodOffsetTop();
@@ -624,6 +650,8 @@ class MainOfferContainerInfiniteScroller extends Component {
             setTimeout(()=>{
               this.setState({
                 firstLoadComplete: true,
+              }, () => {
+                this.getdodOffersOffsetTopRelVwport();
               })
             }, 300)
           });
@@ -691,7 +719,7 @@ class MainOfferContainerInfiniteScroller extends Component {
                 return (
                   <div className='preact-ref-div-dod-offers' ref={node=>{this.dodOffers = node}}>
                   <SectionX id="DealofDayOffers" eventId="DealofDayOffers">
-                    <CaptionWrapperWithButton caption='Best Sellers' eventId={eventId} stylingClass="bg--gradient-green-to-blue">
+                    <CaptionWrapperWithButton caption='Deals of the Day' eventId={eventId} stylingClass="bg--gradient-green-to-blue">
                       {this.state.filterOn && <div className={` filterMainModalContainer ${this.state.modalOpen} ${this.state.filterControl} ${modalDisableClass} `}>
                         {this.state.modalOpen && <FilterMainDOD
                           visibility={this.state.modalOpen}

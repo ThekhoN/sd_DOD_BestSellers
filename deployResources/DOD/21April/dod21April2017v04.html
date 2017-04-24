@@ -1,54 +1,32 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<!--use native sd css-->
-	<!--disable on live -->
-	<!-- <link rel="stylesheet" href="https://i2.sdlcdn.com/css/cxrevamp1492415844037/snap/common/scss/base.min.css">
-	<link rel="stylesheet" href="https://i4.sdlcdn.com/css/cxrevamp1492415844037/snap/components/Offer_Campaign/scss/webResponsiveOffer.css">
-	<link rel="stylesheet" href="https://i4.sdlcdn.com/css/cxrevamp1492415844037/snap/components/Offer_Campaign/scss/OfferCampaign.min.css"> -->
-
-	<% for (var chunk in htmlWebpackPlugin.files.css) { %>
-		<link rel="preload" href="<%= htmlWebpackPlugin.files.css[chunk] %>"  as="style">
-	<% } %>
-	<% for (var chunk in htmlWebpackPlugin.files.chunks) { %>
-		<link rel="preload" href="<%= htmlWebpackPlugin.files.chunks[chunk].entry %>" as="script">
-	<% } %>
-	<meta charset="utf-8">
-	<title>snapdeal-deals-of-the-day</title>
-	<meta name="viewport" content="width=device-width,initial-scale=1">
-
-
-	<!--
-  	<meta name="description" content="snapdeal-best-sellers">
-  	<meta name="msapplication-TileColor" content="#ff2240">
-  	<meta name="msapplication-TileImage" content="./assets/icons/mstile-150x150.png">
-  	<meta name="apple-mobile-web-app-capable" content="yes">
-  	<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  	<meta name="apple-mobile-web-app-title" content="snapdeal-best-sellers">
-  	<meta name="application-name" content="snapdeal-best-sellers">
-  	<meta name="format-detection" content="telephone=no">
-  	<meta name="theme-color" content="#ff2240">
-  	<link rel="apple-touch-icon" sizes="180x180" href="./assets/icons/apple-touch-icon.png">
-  	<link rel="icon" type="image/png" href="/assets/icons/favicon-32x32.png" sizes="32x32">
-  	<link rel="icon" type="image/png" href="/assets/icons/favicon-16x16.png" sizes="16x16">
-  	<link rel="manifest" href="./manifest.json">
-		-->
-	<script>
+<!DOCTYPE html><html><head><link rel="preload" href="https://i1.sdlcdn.com/static/img/marketing-mailers/mailer/2016/x_999/dod21April2017v04style.css" as="style"><link rel="preload" href="https://i1.sdlcdn.com/static/img/marketing-mailers/mailer/2016/x_999/dod21April2017v04bundle.js" as="script"><meta charset="utf-8"><title></title><meta name="viewport" content="width=device-width,initial-scale=1">
+<script>
   // required for Internet Explorer
-  !function(){for(var a,b=function(){},c=["assert","clear","count","debug","dir","dirxml","error","exception","group","groupCollapsed","groupEnd","info","log","markTimeline","profile","profileEnd","table","time","timeEnd","timeline","timelineEnd","timeStamp","trace","warn"],d=c.length,e=window.console=window.console||{};d--;)a=c[d],e[a]||(e[a]=b)}();
+  (function() {
+    var method;
+    var noop = function () {};
+    var methods = [
+        'assert', 'clear', 'count', 'debug', 'dir', 'dirxml', 'error',
+        'exception', 'group', 'groupCollapsed', 'groupEnd', 'info', 'log',
+        'markTimeline', 'profile', 'profileEnd', 'table', 'time', 'timeEnd',
+        'timeline', 'timelineEnd', 'timeStamp', 'trace', 'warn'
+    ];
+    var length = methods.length;
+    var console = (window.console = window.console || {});
+    while (length--) {
+        method = methods[length];
+        // Only stub undefined methods.
+        if (!console[method]) {
+            console[method] = noop;
+        }
+    }
+  }());
 </script>
 <script src="https://cdn.polyfill.io/v2/polyfill.min.js"></script>
 <script>function checkPicturefill_req(){pictureTag_supported?console.log("picture tag supported, picturefill not required!"):["https://cdnjs.cloudflare.com/ajax/libs/picturefill/3.0.1/picturefill.min.js"].forEach(function(e){var c=document.createElement("script");c.src=e,c.async=!0,document.head.appendChild(c)})}var pictureTag_supported=!!window.HTMLPictureElement;checkPicturefill_req()</script>
-</head>
-<body>
-	<!--test toggle header-shortlist-->
-	<!-- <div class="header-shortlist hidden">
-<p>Your item has been added to Shortlist.</p>
-<span><a href="https://www.snapdeal.com/mywishlist">View All</a></span></div> -->
-	<!--test-->
-	<img src="https://i1.sdlcdn.com/static/img/marketing-mailers/mailer/2016/x_999/snapdeal_dodFacebookShareOgImage_31March2017.jpg" style="display:none" alt="Snapdeal Deals of the Day"><div id="in-house-main__container" class="in-house-main__style-reset"><div id="back-top"><a href="#top" class="hashAdded"><i class="back-to-top-icon backTopImg"></i></a></div><div class="in-house-main__header-banner"><picture><!--[if IE 9]><video style="display: none;"><![endif]--><source srcset="https://i1.sdlcdn.com/static/img/marketing-mailers/mailer/2016/x_999/dodHeader_sdGold_Web.jpg" media="(min-width: 768px)"><source srcset="https://i1.sdlcdn.com/static/img/marketing-mailers/mailer/2016/x_999/dodHeader_sdGold_Wap.jpg" media="(min-width: 320px)"><source srcset="https://i1.sdlcdn.com/static/img/marketing-mailers/mailer/2016/x_999/dodHeader_sdGold_Wap.jpg"><!--[if IE 9]></video><![endif]--> <img srcset="https://i1.sdlcdn.com/static/img/marketing-mailers/mailer/2016/x_999/dodHeader_sdGold_Web.jpg 768w, https://i1.sdlcdn.com/static/img/marketing-mailers/mailer/2016/x_999/dodHeader_sdGold_Wap.jpg 360w, https://i1.sdlcdn.com/static/img/marketing-mailers/mailer/2016/x_999/dodHeader_sdGold_Wap.jpg 320w" sizes="100%" alt="Deals of the Day Snapdeal 2016"></picture></div><div id="root" class="preact-mount-node"></div><div class="section__container--rel section__offset--margin-bottom dod_subscribe"><div class="outerformWrapperX99"><div class="relWrapper_anim"><div id="dod_innerMain" class="dod_inner"><div class="dodHeading subsribe_text">Get regular <span>alerts</span> for deals of the day!</div><div class="subsribe_btn"><div class="preferCategoryHeading subsribe_text">Choose category/categories :</div><div class="subscribe_form"><form action="https://docs.google.com/forms/d/e/1FAIpQLSdLUEP2R89tJJ4D2SYb7zAB-7TpAH9xUDcbo1Noj0CoHnzKbA/formResponse" method="POST" id="ss-form" target="hidden_iframe" class="infocusform" onsubmit="validateDodFormSubmit()"><div class="dealform_filed"><ul class="listingdiv"><li><label><input name="entry.622013395" value="Home &amp; Daily Needs" id="group_622013395_1" role="checkbox" class="ss-q-checkbox valid" aria-required="true" type="checkbox"><label class="caption" for="group_622013395_1">Home &amp; Daily Needs</label></label></li><li><label><input name="entry.622013395" value="Electronics &amp; Mobiles" id="group_622013395_2" role="checkbox" class="ss-q-checkbox valid" aria-required="true" type="checkbox"><label class="caption" for="group_622013395_2">Electronics &amp; Mobiles</label></label></li><li><label><input name="entry.622013395" value="Womens Fashion" id="group_622013395_3" role="checkbox" class="ss-q-checkbox valid" aria-required="true" type="checkbox"><label class="caption" for="group_622013395_3">Women's Fashion</label></label></li><li><label><input name="entry.622013395" value="Mens Fashion" id="group_622013395_4" role="checkbox" class="ss-q-checkbox valid" aria-required="true" type="checkbox"><label class="caption" for="group_622013395_4">Men's Fashion</label></label></li><li><label><input name="entry.622013395" value="Kids Fashion" id="group_622013395_5" role="checkbox" class="ss-q-checkbox valid" aria-required="true" type="checkbox"><label class="caption" for="group_622013395_5">Kids' Fashion</label></label></li><li><label><input name="entry.622013395" value="All Category" id="group_622013395_6" role="checkbox" class="ss-q-checkbox valid" aria-required="true" type="checkbox"><label class="caption" for="group_622013395_6">All</label></label></li></ul></div><div class="dealform_filed"><div class="formErrorLog"></div><div class="dodinputfiled"><input name="entry.2056924394" class="sub_submit" id="entry_2056924394" dir="auto" aria-label="Email  " aria-required="true" required="" type="email" placeholder="Please enter your email ID"> <input class="sub_button btn-3 submitFormX99" type="submit" name="REGISTER" value="Subscribe" id="submit"></div></div></form></div><iframe name="hidden_iframe" id="hidden_iframe" style="display:none"></iframe><div class="divforapp"><p style="margin-top:0"></p></div></div></div><div id="subthankyou_text_Wrapper" class="hiddenX99"><div class="subthankyou_text">Thank you for the subscription.<span class="conditionalDisplayX99"><br></span>We will keep you posted...</div></div></div></div></div></div>
-		<!--DOD subscription form-->
-		<script>
+<link href="https://i1.sdlcdn.com/static/img/marketing-mailers/mailer/2016/x_999/dod21April2017v04style.css" rel="stylesheet"></head><body><img src="https://i1.sdlcdn.com/static/img/marketing-mailers/mailer/2016/x_999/snapdeal_dodFacebookShareOgImage_31March2017.jpg" style="display:none" alt="Snapdeal Deals of the Day Sale"><div id="in-house-main__container" class="in-house-main__style-reset"><div id="back-top"><a href="#top" class="hashAdded"><i class="back-to-top-icon backTopImg"></i></a></div><div class="in-house-main__header-banner"><picture><!--[if IE 9]><video style="display: none;"><![endif]--><source srcset="https://i1.sdlcdn.com/static/img/marketing-mailers/mailer/2016/x_999/dodHeader_sdGold_Web.jpg" media="(min-width: 768px)"><source srcset="https://i1.sdlcdn.com/static/img/marketing-mailers/mailer/2016/x_999/dodHeader_sdGold_Wap.jpg" media="(min-width: 320px)"><source srcset="https://i1.sdlcdn.com/static/img/marketing-mailers/mailer/2016/x_999/dodHeader_sdGold_Wap.jpg"><!--[if IE 9]></video><![endif]--> <img srcset="https://i1.sdlcdn.com/static/img/marketing-mailers/mailer/2016/x_999/dodHeader_sdGold_Web.jpg 768w, https://i1.sdlcdn.com/static/img/marketing-mailers/mailer/2016/x_999/dodHeader_sdGold_Wap.jpg 360w, https://i1.sdlcdn.com/static/img/marketing-mailers/mailer/2016/x_999/dodHeader_sdGold_Wap.jpg 320w" sizes="100%" alt="Deals of the Day Snapdeal 2016"></picture></div><div id="root"  class="preact-mount-node"></div><div class="section__container--rel section__offset--margin-bottom dod_subscribe"><div class="outerformWrapperX99"><div class="relWrapper_anim"><div id="dod_innerMain" class="dod_inner"><div class="dodHeading subsribe_text">Get regular <span>alerts</span> for deals of the day!</div><div class="subsribe_btn"><div class="preferCategoryHeading subsribe_text">Choose category/categories :</div><div class="subscribe_form"><form action="https://docs.google.com/forms/d/e/1FAIpQLSdLUEP2R89tJJ4D2SYb7zAB-7TpAH9xUDcbo1Noj0CoHnzKbA/formResponse" method="POST" id="ss-form" target="hidden_iframe" class="infocusform" onsubmit="validateDodFormSubmit()"><div class="dealform_filed"><ul class="listingdiv"><li><label><input name="entry.622013395" value="Home &amp; Daily Needs" id="group_622013395_1" role="checkbox" class="ss-q-checkbox valid" aria-required="true" type="checkbox"><label class="caption" for="group_622013395_1">Home &amp; Daily Needs</label></label></li><li><label><input name="entry.622013395" value="Electronics &amp; Mobiles" id="group_622013395_2" role="checkbox" class="ss-q-checkbox valid" aria-required="true" type="checkbox"><label class="caption" for="group_622013395_2">Electronics &amp; Mobiles</label></label></li><li><label><input name="entry.622013395" value="Womens Fashion" id="group_622013395_3" role="checkbox" class="ss-q-checkbox valid" aria-required="true" type="checkbox"><label class="caption" for="group_622013395_3">Women's Fashion</label></label></li><li><label><input name="entry.622013395" value="Mens Fashion" id="group_622013395_4" role="checkbox" class="ss-q-checkbox valid" aria-required="true" type="checkbox"><label class="caption" for="group_622013395_4">Men's Fashion</label></label></li><li><label><input name="entry.622013395" value="Kids Fashion" id="group_622013395_5" role="checkbox" class="ss-q-checkbox valid" aria-required="true" type="checkbox"><label class="caption" for="group_622013395_5">Kids' Fashion</label></label></li><li><label><input name="entry.622013395" value="All Category" id="group_622013395_6" role="checkbox" class="ss-q-checkbox valid" aria-required="true" type="checkbox"><label class="caption" for="group_622013395_6">All</label></label></li></ul></div><div class="dealform_filed"><div class="formErrorLog"></div><div class="dodinputfiled"><input name="entry.2056924394" class="sub_submit" id="entry_2056924394" dir="auto" aria-label="Email  " aria-required="true" required="" type="email" placeholder="Please enter your email ID"> <input class="sub_button btn-3 submitFormX99" type="submit" name="REGISTER" value="Subscribe" id="submit"></div></div></form></div><iframe name="hidden_iframe" id="hidden_iframe" style="display:none"></iframe><div class="divforapp"><p style="margin-top:0"></p></div></div></div><div id="subthankyou_text_Wrapper" class="hiddenX99"><div class="subthankyou_text">Thank you for the subscription.<span class="conditionalDisplayX99"><br></span>We will keep you posted...</div></div></div></div></div></div>
+<script type="text/javascript" src="https://i1.sdlcdn.com/static/img/marketing-mailers/mailer/2016/x_999/dod21April2017v04bundle.js" ></script>
+	<!--DOD subscription form-->
+	<script>
 		  //domNodes
 		  var _ss_q_checkbox = document.getElementsByClassName('ss-q-checkbox');
 		  var _form = document.getElementById('ss-form');
@@ -257,10 +235,9 @@
 		      tick();
 		  }
 	</script>
-	<!--SD leftNav-->
-	<script type="text/javascript">
-	var Update_leftNavMenuRevampOffsetLeft=function(){function i(){var a=document.body.getBoundingClientRect(),b=c.getBoundingClientRect(),g=b.left-a.left,h=g-f+d;e.style.cssText="left:"+(h-200)+"px !important"}function j(a,b,c){var d;return function(){var e=this,f=arguments,g=function(){d=null,c||a.apply(e,f)},h=c&&!d;clearTimeout(d),d=setTimeout(g,b),h&&a.apply(e,f)}}var a={},b=!0,c=document.getElementsByClassName("menuIconBar")[0];if(c&&null!==c)var d=c.offsetWidth;else console.log(".menuIconBar not found!"),b=!1;var e=document.getElementById("leftNavMenuRevamp");if(e&&null!==e)var f=e.offsetWidth;else console.log("#leftNavMenuRevamp not found!"),b=!1;return a.init=function(){if(b===!1)return void console.log("DOMelemsFound was false, Update_leftNavMenuRevampOffsetLeft.init did not run!");i();var a=j(function(){console.log("running Update_leftNavMenuRevampOffsetLeft"),i()},250);window.addEventListener("resize",a)},a}();
-	Update_leftNavMenuRevampOffsetLeft.init();
-	</script>
-</body>
-</html>
+<!--SD leftNav-->
+<script type="text/javascript">
+var Update_leftNavMenuRevampOffsetLeft=function(){function i(){var a=document.body.getBoundingClientRect(),b=c.getBoundingClientRect(),g=b.left-a.left,h=g-f+d;e.style.cssText="left:"+(h-200)+"px !important"}function j(a,b,c){var d;return function(){var e=this,f=arguments,g=function(){d=null,c||a.apply(e,f)},h=c&&!d;clearTimeout(d),d=setTimeout(g,b),h&&a.apply(e,f)}}var a={},b=!0,c=document.getElementsByClassName("menuIconBar")[0];if(c&&null!==c)var d=c.offsetWidth;else console.log(".menuIconBar not found!"),b=!1;var e=document.getElementById("leftNavMenuRevamp");if(e&&null!==e)var f=e.offsetWidth;else console.log("#leftNavMenuRevamp not found!"),b=!1;return a.init=function(){if(b===!1)return void console.log("DOMelemsFound was false, Update_leftNavMenuRevampOffsetLeft.init did not run!");i();var a=j(function(){console.log("running Update_leftNavMenuRevampOffsetLeft"),i()},250);window.addEventListener("resize",a)},a}();
+Update_leftNavMenuRevampOffsetLeft.init();
+</script>
+</body></html>

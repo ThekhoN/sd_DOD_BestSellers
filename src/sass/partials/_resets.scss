@@ -26,6 +26,40 @@
 }
 */
 
+// use native sd icons for web
+.in-house-main__style-reset .comp-animated-icon {
+  visibility: hidden !important;
+}
+.in-house-main__style-reset .offer-unit__li:hover .comp-animated-icon,
+.in-house-main__style-reset .dodSuperDeal_unit:hover .comp-animated-icon
+ {
+  visibility: visible !important;
+}
+.in-house-main__style-reset .sd-icon{
+      font-size: 20px !important;
+      line-height: 36px !important;
+}
+
+.in-house-main__style-reset .shortlist-products {
+	position: absolute;
+	right:30px;
+	top:0px;
+	color:#e40046 !important;
+	z-index:4 !important;
+}
+
+.in-house-main__style-reset .comp-animated-icon .animated-font-active {
+	color:#e40046 !important;
+}
+
+.in-house-main__style-reset .toggle-short-list-visibility {
+    right: -20px!important;
+}
+
+.header-shortlist {
+  top: 75px !important;
+}
+
 // remove additional space between SD header and pageContent
 .pageWrapper {
   display: none !important;

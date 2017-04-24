@@ -30,14 +30,14 @@
 
 
 //scrollToY
-function scrollToY(valueTopOffset, speed, easing) {
+function scrollToY(valueTopOffset, speed, easing, callback) {
   // original author: shunryu111
   // valueTopOffset: value of element's .topOffset()
   // speed: time in pixels per second
   // easing: easing equation to use
   var scrollY = window.scrollY || document.documentElement.scrollTop,
       valueTopOffset = valueTopOffset || 0,
-      speed = speed || 666,
+      speed = speed || 1000,
       easing = easing || 'easeOutSine',
       currentTime = 0;
   var time = Math.max(.1, Math.min(Math.abs(scrollY - valueTopOffset) / speed, .8));
@@ -67,9 +67,13 @@ function scrollToY(valueTopOffset, speed, easing) {
       window.scrollTo(0, scrollY + ((valueTopOffset - scrollY) * t));
     } else {
       window.scrollTo(0, valueTopOffset);
+      if(callback){
+        callback();
+      }
     }
   }
   tick();
+
 }
 
 export default scrollToY
