@@ -83,30 +83,30 @@ $forceLoadingHeight: 390px;
   }
 }
 
-.disable-overflow {
-  position: fixed;
-  height: 100%;
-  width: 100%;
-  top: 0;
-  left: 0;
-  z-index: 12 ;
-  background: none;
-  -webkit-transform: translate3d(0, 0, 0);
-  transform: translate3d(0, 0, 0);
-}
+// .disable-overflow {
+//   position: fixed;
+//   height: 100%;
+//   width: 100%;
+//   top: 0;
+//   left: 0;
+//   z-index: 12 ;
+//   background: none;
+//   -webkit-transform: translate3d(0, 0, 0);
+//   transform: translate3d(0, 0, 0);
+// }
+// 
 
-
-.disableModal {
-  .disable-overflow {
-    display: block;
-  }
-}
-
-.enableModal {
-  .disable-overflow {
-    display: none;
-  }
-}
+// .disableModal {
+//   .disable-overflow {
+//     visibility: visible;
+//   }
+// }
+//
+// .enableModal {
+//   .disable-overflow {
+//     visibility: hidden;
+//   }
+// }
 
 .deal-not-found {
   height: $minHeightDealofDayOffers;

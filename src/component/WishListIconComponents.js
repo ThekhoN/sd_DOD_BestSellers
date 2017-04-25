@@ -5,7 +5,7 @@ const ADD_WISHLIST_URL = 'https://www.snapdeal.com/wishlist/add?pog';
 const REMOVE_WISHLIST_URL = 'https://www.snapdeal.com/wishlist/remove?pog';
 const WISHLIST_URL = 'https://www.snapdeal.com/mywishlist';
 
-export const ShortlistConfirm = () => (<div className='shortlist-confirm'>
+export const ShortlistConfirm = ({visibilityClassName}) => (<div className={`shortlist-confirm ${visibilityClassName}`}>
   <p className='shortlist-confirm__info'>Your item has been added to Shortlist.</p>
   <span className='shortlist-confirm__button'>
     <span className='shortlist-confirm__link' onClick={()=>{
@@ -59,13 +59,13 @@ export class WishlistIconAbsContainer extends Component {
     // }
     //   // if logged in
     // if(Snapdeal.Cookie.get('lu') === 'true'){
-    //   if(!shortlisted){
+    //   if(!this.state.shortlisted){
     //     axios.get(`${ADD_WISHLIST_URL}=${pogId}`)
     //       .then( response => {
     //         this.setState({
     //           shortlisted: true
     //         }, ()=> {
-    //           this.props.dispatchToMainShowingShortlistConfirm(true);
+    //           this.props.dispatchToMainShowingShortlistConfirm();
     //         });
     //       })
     //       .catch(err => {
@@ -90,11 +90,11 @@ export class WishlistIconAbsContainer extends Component {
     //   }
     // }
     /* local */
-    if(!shortlisted){
+    if(!this.state.shortlisted){
       this.setState({
         shortlisted: true
       }, ()=>{
-        this.props.dispatchToMainShowingShortlistConfirm(true);
+        this.props.dispatchToMainShowingShortlistConfirm();
       })
     }
     else {
@@ -117,7 +117,9 @@ export class WishlistIconAbsContainer extends Component {
 
     return (
       <div className='wishlist-icon-wrapper--abs'
-        onClick={this.toggleShortList} >
+        onClick={()=>{
+          this.toggleShortList();
+      }} >
         <WishlistIcon childPath={ this.renderWishlistIconType() } />
       </div>
     )

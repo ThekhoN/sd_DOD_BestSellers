@@ -69,6 +69,20 @@ const getRemainingReqUrl = (countlimit, nextStart) => {
 // +++++ /getNextReqUrl +++++ //
 const forceLoadAllOffersURL = `https://mobileapi.snapdeal.com/service/generic/get/getGenericOffer?landingPage=${landingPageName}&start=0&count=${countlimit}`;
 
+
+// test
+class LoadingComponent extends Component {
+  shouldComponentUpdate(nextProps, nextState){
+    return nextProps.isLoading !== this.props.isLoading;
+  }
+  render(){
+    const {isLoading} = this.props;
+    return (
+      <div className={`loader__container--fixed ${isLoading}`}><Loader/></div>
+    )
+  }
+}
+
 class MainOfferContainerInfiniteScroller extends Component {
   constructor(props){
     super(props);
@@ -148,19 +162,24 @@ class MainOfferContainerInfiniteScroller extends Component {
     this.detectElemInVwPort = this.detectElemInVwPort.bind(this);
     this.handleDisplayFilterControlOnScroll = this.handleDisplayFilterControlOnScroll.bind(this);
     this.checkSecondLoadComplete = this.checkSecondLoadComplete.bind(this);
-    this.renderFixedLoader = this.renderFixedLoader.bind(this);
     this.getdodOffersOffsetTopRelVwport = this.getdodOffersOffsetTopRelVwport.bind(this);
   }
-  updateShowingShortlistConfim(updateBoolean){
+  updateShowingShortlistConfim(){
     this.setState({
-      showingShortlistConfim: updateBoolean
-    }, ()=> {
+      showingShortlistConfim: true
+    }, ()=>{
       setTimeout(()=> {
         this.setState({
-          showingShortlistConfim: !updateBoolean
+          showingShortlistConfim: false //force set to false
         });
-      }, 3000);
+      }, 2000);
     });
+
+    // setTimeout(()=> {
+    //   this.setState({
+    //     showingShortlistConfim: false //force set to false
+    //   });
+    // }, 2000);
   }
   getdodOffersOffsetTopRelVwport(){
     let dodOffersOffsetTopRelVwport = 0;
@@ -671,29 +690,15 @@ class MainOfferContainerInfiniteScroller extends Component {
   onLeaveDealOfDayOffers(){
     this.hideFilterControl()
   }
-  renderFixedLoader(){
-    const { isLoading } = this.state;
-    class LoadingComponent extends Component {
-      shouldComponentUpdate(nextProps, nextState){
-        return nextProps.isLoading !== this.props.isLoading;
-      }
-      render(){
-        const {isLoading} = this.props;
-        return (
-          <div className={`loader__container--fixed ${isLoading}`}><Loader/></div>
-        )
-      }
-    }
-    return (<LoadingComponent isLoading={isLoading}/>);
-  }
   render(){
     const {eventIds, captions} = this.props;
     const {data, forceLoading, isLoading} = this.state;
     const modalDisableClass = forceLoading || isLoading ? 'disableModal' : 'enableModal';
-    return (<div className={`preact-inner-app-container ${modalDisableClass}`}>
-      {!this.state.mobileSite && this.state.showingShortlistConfim && <ShortlistConfirm/>}
-      <div className='disable-overflow'></div>
-      {this.state.firstLoadComplete && this.renderFixedLoader()}
+    return (<div className='preact-inner-app-container'>
+      {!this.state.mobileSite && <ShortlistConfirm visibilityClassName={this.state.showingShortlistConfim}/>}
+      {/* {<div className='disable-overflow'></div>} */}
+      {/* {this.state.firstLoadComplete && this.renderFixedLoader()} */}
+      <LoadingComponent isLoading={isLoading}/>
       <ModalOverlay active={this.state.modalOpen}
         handleModalClose={
           this.handleModalClose

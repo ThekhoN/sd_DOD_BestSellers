@@ -34,8 +34,6 @@ export default class OfferUnitLi extends Component {
     if(isISObject(item.commonMinProductDetailsDTO) || item.pogId){
       this.setState({
         pogId: item.pogId
-      }, ()=>{
-        // console.log('pogId on mount: ', this.state.pogId);
       });
     }
   }

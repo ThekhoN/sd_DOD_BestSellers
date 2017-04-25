@@ -18,6 +18,7 @@ $border-radius: 3px;
 
   &.active {
     -webkit-transform: scale(1);
+    transform: scale(1);
     opacity: 1;
   }
 }
