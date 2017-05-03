@@ -621,7 +621,6 @@ class MainOfferContainerInfiniteScroller extends Component {
       // 6. this alert is disabled \n
       `);
     */
-
     this.checkIfMobileSite();
     this.getvwPortSize();
     this.getDodOffsetTop();
