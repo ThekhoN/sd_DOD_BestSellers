@@ -1,0 +1,85 @@
+$bp: 640px;
+
+// .countdown-timer {
+//   // width: 480px;
+//   text-align: center;
+//   // color: #ffffff;
+//   // text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.3);
+//   // background: #a5a6a7; /* IE9 fallback */
+//   // background-image: linear-gradient(97deg, #64ecba, #008de7);
+//   // margin-bottom: 5px;
+//   color: #e40046;
+//   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+//   background: white;
+//   padding: 12px 0 13px 0;
+//   font-size: 14px;
+//   letter-spacing: 1px;
+//   box-shadow: 0px 2px 8px 0px rgba(50, 50, 50, 0.65);
+//
+//
+//   @include breakpoint($bp){
+//     margin-bottom: 0;
+//     box-shadow: 0px 2px 8px 0px rgba(50, 50, 50, 0.25);
+//     padding: 20px 0 25px 0;
+//     font-size: 18px;
+//     letter-spacing: 1px;
+//   }
+// }
+
+.countdown-timer__wrapper {
+  width: 100%;
+  position: absolute;
+  left: 0;
+  top: -40px;
+  background: none;
+  box-shadow: 0px -1px 8px 2px rgba(255, 255, 255, 0.06);
+  border-top: 1px solid #31290d;
+  @include breakpoint($bp){
+    top: -70px;
+  }
+}
+
+.countdown-timer {
+  text-align: center;
+  color: #ffb520;
+  text-shadow: 1px 1px 1px rgba(255, 0, 0, 0.34);
+  background: rgba(0, 0, 0, 0.6);
+  padding: 12px 0 13px 0;
+  font-size: 14px;
+  letter-spacing: 1px;
+
+  @include breakpoint($bp){
+    text-shadow: 1px 1px 1px rgba(255, 0, 0, 0.74);
+    margin-bottom: 0;
+    padding: 20px 0 25px 0;
+    font-size: 18px;
+    letter-spacing: 1px;
+  }
+}
+
+
+.countdown-timer__title {
+  display: inline-block !important;
+  width: 62px;
+  @include breakpoint($bp){
+    width: 80px;
+  }
+}
+
+.countdown-timer__time {
+  display: inline-block !important;
+  box-sizing: border-box;
+  width: 60px;
+  @include breakpoint($bp){
+    width: 78px;
+  }
+}
+
+.countdown-timer--bold {
+  letter-spacing: 0;
+  font-family: font-bold;
+  font-size: 16px;
+  @include breakpoint($bp){
+    font-size: 24px;
+  }
+}

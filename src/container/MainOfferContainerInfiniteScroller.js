@@ -23,6 +23,7 @@ import FilterMainDOD from '../component/FilterMainDOD';
 import ModalOverlay from '../component/ModalOverlay';
 import Loader from '../component/Loader';
 import DealNotFound from '../component/DealNotFound';
+import CountdownTimer from '../component/CountdownTimer';
 import { ShortlistConfirm } from '../component/WishlistIconComponents';
 
 //placeholder components
@@ -91,6 +92,7 @@ class MainOfferContainerInfiniteScroller extends Component {
     const _captions = captions ? captions: {};
     const _eventIds = eventIds? eventIds: [];
     this.state = {
+      showTimer: true,
       showPlaceholder: true,
       filterOn: true,
       showingShortlistConfim: false,
@@ -694,6 +696,17 @@ class MainOfferContainerInfiniteScroller extends Component {
     const {data, forceLoading, isLoading} = this.state;
     const modalDisableClass = forceLoading || isLoading ? 'disableModal' : 'enableModal';
     return (<div className='preact-inner-app-container'>
+      {/*
+        //date & time format ~ MM/DD/YYY HH:MM:SS 24 hrs format
+        //offsetGMT ~ default 'GMT+0530' (Indian Standard Time)
+    */}
+      {this.state.showTimer && <CountdownTimer
+        startTime='01/12/2016 00:01:00'
+        endTime='11/29/2018 11:59:00'
+        callback={function(){ console.log('running timer...'); }}
+        offsetGMT='GMT+0530'
+        id='Timer01' />
+      }
       {!this.state.mobileSite && <ShortlistConfirm visibilityClassName={this.state.showingShortlistConfim}/>}
       {/* {<div className='disable-overflow'></div>} */}
       {/* {this.state.firstLoadComplete && this.renderFixedLoader()} */}

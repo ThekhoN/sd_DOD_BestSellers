@@ -38,43 +38,12 @@
 @import 'partials/newThemeStyles';
 @import 'partials/caption_newTheme';
 
-/// +++++ required for captionTimer
-//@import 'partials/caption_newTimerWrapper';
-
 /// +++++ newSocialShare css
 @import 'partials/socialShare_newTheme';
 
 @import 'partials/viewAll_new';
 //@import 'partials/offerUnit_vwAll';
 @import 'partials/footerBannerX99';
-
-/// +++++ navMainX
-/*
-@import 'partials/navMainX';
-  /// +++++ navMainX_slideIn
-  @import 'partials/navMainX_slideIn_utils';
-  @import 'partials/navMainX_slideIn';
-  @import 'partials/navMainX_slideIn_items';
-  @import 'partials/navMainX_showOnScroll';
-  @import 'partials/navMainX_showOnScroll_bottomNav';
-*/
-
-//@import 'partials/dod_diwaliNav';
-
-/// * * * quickLinks
-//@import 'partials/quickLinkOffers';
-
-/// * * * electronicsSale
-//@import 'partials/electronicsSaleConditionals';
-//@import 'partials/upcomingOffers';
-
-/// * * * timerOfferStyles
-//@import 'partials/timerAllStyles';
-//@import 'partials/timerHeader';
-//@import 'partials/offerWithTimer';
-//@import 'partials/conditionalsTimer';
-// +++++ hourlyTimer
-//@import 'partials/hourly';
 
 /// * * * DOD
 @import 'partials/dod_SuperDeals';
@@ -108,6 +77,8 @@
 @import 'partials/fadeCSSTransition';
 // wishlist-shortlist-styles
 @import 'partials/wishlist-shortlist-styles';
+// timer
+@import 'partials/countdownTimerStyles';
 
 $susy:( container:1920,
 columns:12,
@@ -171,6 +142,11 @@ output:float // For Debugging - mainWrapper should not have a bg Color
   width: 100%;
   float: left;
   position: relative;
+  // padding: 5px;
+  // box-sizing: border-box;
+  // @include breakpoint(768px){
+  //   padding: 0;
+  // }
 }
 
 #root.preact-mount-node {

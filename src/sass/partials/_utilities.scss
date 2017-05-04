@@ -1,4 +1,8 @@
 
+@mixin border-radius($radius){
+  border-radius: $radius;
+}
+
 .contRofl_clr {
     width: 100%;
     float: left;
