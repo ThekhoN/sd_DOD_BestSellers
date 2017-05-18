@@ -21,13 +21,8 @@ const getNonDuplicateNextData = (previousData, newData) => {
   }
   for (let i = 0; i < duplicate.length; i++) {
     newData.forEach(nextDi => {
-      // if not pogId then ignore and push
-      if (nextDi.pogId === '') {
+      if (nextDi.pogId !== duplicate[i].pogId) {
         myUniqueResult.push(nextDi);
-      } else {
-        if (nextDi.pogId !== duplicate[i].pogId) {
-          myUniqueResult.push(nextDi);
-        }
       }
     });
   }
