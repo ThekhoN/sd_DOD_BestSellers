@@ -29,22 +29,21 @@ export default class OfferUnitLi extends Component {
       )
     }
   }
-  componentDidMount(){
+  componentDidMount () {
     const { item } = this.props;
-    if(isISObject(item.commonMinProductDetailsDTO) || item.pogId){
+    if (isISObject(item.commonMinProductDetailsDTO) || item.pogId) {
       this.setState({
         pogId: item.pogId
       });
     }
   }
-  shouldComponentUpdate(nextProps, nextState){
+  shouldComponentUpdate (nextProps, nextState) {
     // return nextProps.item !== this.props.item;
     const shouldUpdate = nextState.offerState !== this.state.offerState || nextProps.item !== this.props.item || this.state.pogId !== nextState.pogId;
     return shouldUpdate;
   }
-  render(){
-    const {item, mobileSite, i} = this.props
-    // console.log('this.props.mobileSite at OfferUnitLi: ', mobileSite);
+  render () {
+    const {item, mobileSite, i} = this.props;
     if(querySdPlusPriceSlab(item)){
         return null;
       }

@@ -1,4 +1,6 @@
-$bp: 640px;
+$bp768: 768px;
+$bp640: 640px;
+$bp1280: 1280px;
 
 // .countdown-timer {
 //   // width: 480px;
@@ -34,8 +36,15 @@ $bp: 640px;
   background: none;
   box-shadow: 0px -1px 8px 2px rgba(255, 255, 255, 0.06);
   border-top: 1px solid #31290d;
-  @include breakpoint($bp){
-    top: -70px;
+  @include breakpoint($bp640){
+    top: -43px;
+  }
+  @include breakpoint($bp768){
+    // top: -70px;
+    top: -39px;
+  }
+  @include breakpoint($bp1280){
+    top: -52px;
   }
 }
 
@@ -47,13 +56,17 @@ $bp: 640px;
   padding: 12px 0 13px 0;
   font-size: 14px;
   letter-spacing: 1px;
-
-  @include breakpoint($bp){
+  @include breakpoint($bp640){
+    font-size: 16px;
+  }
+  @include breakpoint($bp768){
     text-shadow: 1px 1px 1px rgba(255, 0, 0, 0.74);
-    margin-bottom: 0;
-    padding: 20px 0 25px 0;
+    padding: 10px 0;
     font-size: 18px;
     letter-spacing: 1px;
+  }
+  @include breakpoint($bp1280){
+    padding: 14px 0;
   }
 }
 
@@ -61,7 +74,10 @@ $bp: 640px;
 .countdown-timer__title {
   display: inline-block !important;
   width: 62px;
-  @include breakpoint($bp){
+  @include breakpoint($bp640){
+    width: 70px;
+  }
+  @include breakpoint($bp768){
     width: 80px;
   }
 }
@@ -70,7 +86,10 @@ $bp: 640px;
   display: inline-block !important;
   box-sizing: border-box;
   width: 60px;
-  @include breakpoint($bp){
+  @include breakpoint($bp640){
+    width: 70px;
+  }
+  @include breakpoint($bp768){
     width: 78px;
   }
 }
@@ -79,7 +98,13 @@ $bp: 640px;
   letter-spacing: 0;
   font-family: font-bold;
   font-size: 16px;
-  @include breakpoint($bp){
+  @include breakpoint($bp640){
+    font-size: 18px;
+  }
+  // @include breakpoint($bp768){
+  //   font-size: 20px;
+  // }
+  @include breakpoint($bp1280){
     font-size: 24px;
   }
 }

@@ -1,0 +1,5 @@
+use buyableInventory.
+compare with defined value(inventoryLimit) in the csv column,
+if (buyableInventory <= inventoryLimit) {
+ show number/% units left
+}
