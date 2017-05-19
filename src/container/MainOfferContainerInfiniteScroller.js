@@ -36,7 +36,8 @@ import initSocialShareModule from '../module/initSocialShareModule';
 import {debouncer} from '../module/debounce';
 import scrollToY from '../module/scrollToY';
 import getOffset from '../module/getOffset';
-import getNonDuplicateNextData from '../module/getNonDuplicateNextData';
+// import getNonDuplicateNextData from '../module/getNonDuplicateNextData';
+import getUniqueByPogId from '../module/getUniqueByPogId';
 
 // live
 const preUrl = queryUrl();
@@ -53,7 +54,9 @@ const scrollInfLoadThreshold = 55; // prev 45
 const firstStart = 0;
 const count = 50;
 let nextStart = count;
-let firstReqUrl = `${preUrl}&start=${firstStart}&count=${count}`;
+let firstReqUrl = `${preUrl}&start=${firstStart}&count=${count - 1}`;
+// let firstReqUrl = `${preUrl}&start=${firstStart}&count=${count}`;
+console.log('firstReqUrl: ', firstReqUrl);
 const getNextReqUrl = () => {
   const nextUrl = `${preUrl}&start=${nextStart}&count=${count}`;
   nextStart = nextStart + count; // prev nextStart + count + 1;
@@ -360,10 +363,19 @@ class MainOfferContainerInfiniteScroller extends Component {
     let nextUrl = getNextReqUrl();
     axios.get(nextUrl)
       .then(response => {
+        console.log('nextUrl: ', nextUrl);
         const responseData = response.data;
         const _data = responseData.genericOfferItems;
-        const nonDuplicateNextData = getNonDuplicateNextData(this.state.data, _data);
-        const _nextData = [...this.state.data, ...nonDuplicateNextData];
+        let _nextData;
+        // old ~ produces duplicate at 50-51
+        _nextData = [...this.state.data, ..._data];
+
+        // current
+        // _nextData = getUniqueByPogId([...this.state.data, ..._data]);
+
+        // previous fail
+        // const nonDuplicateNextData = getNonDuplicateNextData(this.state.data, _data);
+        // _nextData = [...this.state.data, ...nonDuplicateNextData];
         this.setState({
           data: _nextData,
           isLoading: false
@@ -545,7 +557,7 @@ class MainOfferContainerInfiniteScroller extends Component {
     /*******************************************/
       //  PREBUILD CHECKLIST
     /*******************************************/
-
+    /*
     alert(`Ensure the following before build: \n
       // 1. Ensure Header is correctly set - Best Sellers used for Best Sellers && Deals of the Day for DOD \n
       // 2. if DOD, superDod is uncommented in render \n
@@ -553,7 +565,7 @@ class MainOfferContainerInfiniteScroller extends Component {
       // 4. correct html is being used \n
       // 5. this alert is disabled \n
       `);
-
+      */
     this.checkIfMobileSite();
     this.getvwPortSize();
     this.getDodOffsetTop();
