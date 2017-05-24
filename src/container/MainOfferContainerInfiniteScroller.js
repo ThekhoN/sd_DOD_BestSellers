@@ -56,7 +56,7 @@ const count = 50;
 let nextStart = count;
 let firstReqUrl = `${preUrl}&start=${firstStart}&count=${count - 1}`;
 // let firstReqUrl = `${preUrl}&start=${firstStart}&count=${count}`;
-console.log('firstReqUrl: ', firstReqUrl);
+// console.log('firstReqUrl: ', firstReqUrl);
 const getNextReqUrl = () => {
   const nextUrl = `${preUrl}&start=${nextStart}&count=${count}`;
   nextStart = nextStart + count; // prev nextStart + count + 1;
@@ -363,7 +363,7 @@ class MainOfferContainerInfiniteScroller extends Component {
     let nextUrl = getNextReqUrl();
     axios.get(nextUrl)
       .then(response => {
-        console.log('nextUrl: ', nextUrl);
+        // console.log('nextUrl: ', nextUrl);
         const responseData = response.data;
         const _data = responseData.genericOfferItems;
         let _nextData;
