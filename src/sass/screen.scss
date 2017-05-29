@@ -69,6 +69,7 @@
 /// +++++ reactSpecific
 @import 'partials/reactPreLoaderWrappers';
 @import 'partials/infiniteComponentStyles';
+@import 'partials/showLimitedInventory';
 
 @import 'partials/reactLazyLoad';
 @import 'partials/loaderComponent';
@@ -79,6 +80,7 @@
 @import 'partials/wishlist-shortlist-styles';
 // timer
 @import 'partials/countdownTimerStyles';
+
 
 $susy:( container:1920,
 columns:12,
