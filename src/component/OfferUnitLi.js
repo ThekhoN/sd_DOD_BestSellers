@@ -10,15 +10,18 @@ import CenterContentWrapper from '../SubComponent/CenterContentWrapper';
 import querySdPlusPriceSlab from '../module/querySdPlusPriceSlab';
 import {isISObject} from '../module/ValidateData';
 import {WishlistIconAbsContainer} from './WishlistIconComponents';
-import ShowLimitedInventory from './ShowLimitedInventory';
+import ShowSpecialTxtLimitedInventory from './ShowSpecialTxtLimitedInventory';
+// import {ShowSpecialTxt, ShowMultipleUnitsLeft, ShowSingleUnitLeft, ShowLimitedStock} from './ShowSpecialTxtLimitedInventory';
+
+const inventoryLimitMax = 20;
+const inventoryLimitMin = 9;
 
 // OfferUnitLi Component
 export default class OfferUnitLi extends Component {
   constructor (props) {
     super(props);
     this.state = {
-      pogId: '',
-      buyableInventory: ''
+      pogId: ''
     };
     this.handleRenderWishlistIcon = this.handleRenderWishlistIcon.bind(this);
   }
@@ -35,25 +38,39 @@ export default class OfferUnitLi extends Component {
     const { item } = this.props;
     if (isISObject(item.commonMinProductDetailsDTO) || item.pogId) {
       this.setState({
-        pogId: item.pogId,
-        buyableInventory: item.commonMinProductDetailsDTO.vendorDTO.buyableInventory
+        pogId: item.pogId
       });
     }
   }
   shouldComponentUpdate (nextProps, nextState) {
-    // return nextProps.item !== this.props.item;
+    // const shouldUpdate = nextState.offerState !== this.state.offerState || nextProps.item !== this.props.item || this.state.pogId !== nextState.pogId;
     const shouldUpdate = nextState.offerState !== this.state.offerState || nextProps.item !== this.props.item || this.state.pogId !== nextState.pogId;
     return shouldUpdate;
   }
   render () {
     const {item, mobileSite, i} = this.props;
-    const inventoryLimit = item.extraField4;
-    const {pogId, buyableInventory} = this.state;
+    // const {pogId, specialTxt, buyableInventory} = this.state;
     if (querySdPlusPriceSlab(item)) {
       return null;
     }
+
+    let pogId = '';
+    let specialTxt = undefined;
+    let buyableInventory = '';
+    let unitsTxt = undefined;
+
     if (isISObject(item.commonMinProductDetailsDTO) || item.pogId) {
-      if (item.commonMinProductDetailsDTO.priceInfo == null) {
+      pogId = item.pogId;
+      specialTxt = item.extraField4;
+      buyableInventory = item.commonMinProductDetailsDTO.vendorDTO.buyableInventory;
+      if (buyableInventory <= inventoryLimitMin) {
+        if (buyableInventory > 1) {
+          unitsTxt = 'units';
+        } else {
+          unitsTxt = 'unit';
+        }
+      }
+      if (item.commonMinProductDetailsDTO.priceInfo == null || item.commonMinProductDetailsDTO.soldOut === true) {
         return null;
       }
     }
@@ -67,7 +84,13 @@ export default class OfferUnitLi extends Component {
             { !mobileSite && pogId && this.handleRenderWishlistIcon() }
             <OfferLink item={item}>
               <OfferLinkAfterWrap>
-                {(pogId && buyableInventory <= inventoryLimit) && <ShowLimitedInventory />}
+                {pogId && <ShowSpecialTxtLimitedInventory
+                  specialTxt={specialTxt}
+                  buyableInventory={buyableInventory}
+                  unitsTxt={unitsTxt}
+                  inventoryLimitMax={inventoryLimitMax}
+                  inventoryLimitMin={inventoryLimitMin}
+                 />}
                 <ImgOfferUnit item={item} />
                 <OfferNonImgWrap>
                   <CenterContentWrapper>
@@ -87,7 +110,13 @@ export default class OfferUnitLi extends Component {
         data-filter={item.filters}>
         {!mobileSite && pogId && this.handleRenderWishlistIcon()}
         <OfferLink item={item}>
-          {(pogId && buyableInventory <= inventoryLimit) && <ShowLimitedInventory />}
+          {pogId && <ShowSpecialTxtLimitedInventory
+            specialTxt={specialTxt}
+            buyableInventory={buyableInventory}
+            unitsTxt={unitsTxt}
+            inventoryLimitMax={inventoryLimitMax}
+            inventoryLimitMin={inventoryLimitMin}
+           />}
           <ImgOfferUnit item={item} />
           <OfferNonImgWrap>
             <TitleOfferUnit item={item} />

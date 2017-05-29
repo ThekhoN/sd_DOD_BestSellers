@@ -1,4 +1,4 @@
-.show-limited-inventory {
+.show-special-txt-limited-inventory {
   position: absolute;
   display: inline-block;
   top: 0;
@@ -7,9 +7,10 @@
   text-align: left;
   padding: 5px;
   box-sizing: border-box;
-  background-color: rgba(199, 0, 61, 0.6);
+  background-color: rgba(255, 0, 0, 0.6);
   color: white;
-  font-size: 12px;
+  font-size: 10px;
+  letter-spacing: 1px;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
 
   @include breakpoint(640px) {
