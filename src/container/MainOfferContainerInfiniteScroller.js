@@ -24,6 +24,7 @@ import DealNotFound from '../component/DealNotFound';
 import CountdownTimer from '../component/CountdownTimer';
 import { ShortlistConfirm } from '../component/WishlistIconComponents';
 import LoadingComponent from '../component/LoadingComponent';
+import FooterBannerComponent from '../component/FooterBannerComponent';
 
 // placeholder components
 import {OfferUnitLiPlaceholderGroup2x2} from '../component/OfferUnitLiPlaceholder';
@@ -709,7 +710,18 @@ class MainOfferContainerInfiniteScroller extends Component {
                   </SectionX>
                 </div>
               );
-            } }
+            }
+            if (eventId.indexOf('NGOFooterBannerX99') > -1) {
+              return (<SectionX >
+                {data.filter(offer => (
+                  offer.eventId === 'NGOFooterBannerX99'))
+                  .map((thisOffer, i) => (
+                      <FooterBannerComponent item={thisOffer} key={i}/>
+                  ))
+                }
+              </SectionX>);
+            }
+          }
               )}
         </div>
       </MaxWidthContainer>

@@ -1,6 +1,6 @@
 import {h} from 'preact';
 
-const SocialShareComponent = () => (<div class="section__container--rel section__offset--margin-bottom  overflow--visible ">
+const SocialShareComponent = () => (<div class="section__container--rel overflow--visible ">
           <div class="innerCard_sectionXWrap overflow--visible">
             <div class="shareX99_wrapper">
               <div class="shareX99">

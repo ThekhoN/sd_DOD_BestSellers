@@ -3,8 +3,6 @@ import MobPlatformCheck from '../module/MobPlatformCheck';
 import {isLegit_pogId_item} from '../module/ValidateData';
 
 import SdPlusLogo from '../subComponent/SdPlusLogo';
-//import LazyLoadedImgUnit from '../component/LazyLoadedImgUnit'
-
 
 const ImgOfferUnit = ({item}) => {
   let offerImageUrl, userDefined_offerImageUrl, sdgold, offerName;
@@ -31,14 +29,5 @@ const ImgOfferUnit = ({item}) => {
         </div>
       );
 }
-
-/*
-<LazyLoadedImgUnit offerImageUrl={offerImageUrl} offerName={offerName} />
-*/
-
-
-/*
-<img src={offerImageUrl} alt={offerName} className='offerImg--img--constrain-size'/>
-*/
 
 export default ImgOfferUnit;
