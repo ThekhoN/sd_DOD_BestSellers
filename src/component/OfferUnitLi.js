@@ -52,6 +52,9 @@ export default class OfferUnitLi extends Component {
     const {item} = this.props;
     const specialTxt = item.extraField4;
     let buyableInventory = '';
+    if (specialTxt) {
+      return (<ShowSpecialTxt specialTxt={specialTxt} />);
+    }
     if (!item || !item.pogId || !isISObject(item.commonMinProductDetailsDTO) || !item.commonMinProductDetailsDTO.vendorDTO) {
       return null;
     } else {
@@ -59,9 +62,7 @@ export default class OfferUnitLi extends Component {
       if (!buyableInventory) {
         return null;
       } else {
-        if (specialTxt) {
-          return (<ShowSpecialTxt />);
-        } else if (buyableInventory <= inventoryLimitMax) {
+        if (buyableInventory <= inventoryLimitMax) {
           if (buyableInventory <= inventoryLimitMin) {
             if (buyableInventory === 1) {
               return (<ShowSingleUnitLeft />);
@@ -71,6 +72,8 @@ export default class OfferUnitLi extends Component {
           } else {
             return (<ShowLimitedStock />);
           }
+        } else {
+          return null;
         }
       }
     }
