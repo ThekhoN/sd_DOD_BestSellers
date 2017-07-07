@@ -18,7 +18,8 @@ $timerX99_WrapperWidth_m_timerHeader: 82px;
   }
 
   .timerX99_Wrapper {
-    color: #C80032;
+    // color: #C80032;
+    color: white;
     width: $timerX99_WrapperWidth_m_timerHeader;
     @include breakpoint(480px){
       width: $timerX99_WrapperWidth_web_timerHeader;
