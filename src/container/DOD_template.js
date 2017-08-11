@@ -79,7 +79,7 @@ class MainOfferContainerInfiniteScroller extends Component {
     const _captions = captions ? captions : {};
     const _eventIds = eventIds ? eventIds : [];
     this.state = {
-      showTimer: false,
+      showTimer: true,
       showPlaceholder: true,
       filterOn: true,
       showingShortlistConfim: false,
@@ -657,11 +657,43 @@ class MainOfferContainerInfiniteScroller extends Component {
               /*
               Disable DOD incase BestSellers
               */
+            if (eventId.indexOf('superDod') > -1) {
+              return (
+                <SectionX id={eventId}>
+                  {!this.state.mobileView && <SectionX />}
+                  <InnerCardSectionXWrap>
+                    <CaptionWrapper caption={captions[eventId]} eventId={eventId} stylingClass='bg--gradient-orange-to-red' />
+                    <OfferContainerWrapperDoD>
+                      <ul className='responsive-font-size--reset-0 responsive-layout--centered'>
+                        {this.state.showPlaceholder && <PlaceholderSuperDealOfferUnitGroup2x2 />}
+                        {data.filter(offer => (
+                          offer.eventId === eventId))
+                          .map((thisOffer, i) => (<OfferUnitLi dispatchToMainShowingShortlistConfirm={this.updateShowingShortlistConfim} showingShortlistConfim={this.state.showingShortlistConfim} mobileSite={this.state.mobileSite} item={thisOffer} i={i} />))
+                        }
+                      </ul>
+                    </OfferContainerWrapperDoD>
+                  </InnerCardSectionXWrap>
+                </SectionX>
+              );
+            }
             if (eventId.indexOf('DealofDayOffers') > -1) {
               return (
                 <div className='preact-ref-div-dod-offers' ref={node => { this.dodOffers = node; }}>
                   <SectionX id='DealofDayOffers' eventId='DealofDayOffers'>
-                    <div style={{width: '100%', marginBottom: '10px'}}></div>
+                    <CaptionWrapperWithButton caption='Deals of the Day' eventId={eventId} stylingClass='bg--gradient-green-to-blue'>
+                      {this.state.filterOn && <div className={` filterMainModalContainer ${this.state.modalOpen} ${this.state.filterControl} ${modalDisableClass} `}>
+                        {this.state.modalOpen && <FilterMainDOD
+                          visibility={this.state.modalOpen}
+                          handleResetFilters={this.handleResetFilters}
+                          activeFilters={this.state.activeFilters}
+                          dispatchSubmitFiltersToMain={this.handleSubmitFilters}
+                          handleModalClose={this.handleModalClose}
+                          forceLoading={this.state.forceLoading} />}
+                          {!this.state.modalOpen && !this.state.forceLoading && !this.state.isLoading && <ButtonModalTrigger
+                            text='filter'
+                            handleModalOpen={this.handleModalOpen} />}
+                        </div>}
+                    </CaptionWrapperWithButton>
                     <InnerCardSectionXWrap>
                       <OfferContainerWrapperNormal>
                         <div className='infinite-content__container'>
@@ -674,9 +706,20 @@ class MainOfferContainerInfiniteScroller extends Component {
                         </div>
                       </OfferContainerWrapperNormal>
                     </InnerCardSectionXWrap>
+                    <SocialShareComponent />
                   </SectionX>
                 </div>
               );
+            }
+            if (eventId.indexOf('NGOFooterBannerX99') > -1) {
+              return (<SectionX >
+                {data.filter(offer => (
+                  offer.eventId === 'NGOFooterBannerX99'))
+                  .map((thisOffer, i) => (
+                      <FooterBannerComponent item={thisOffer} key={i}/>
+                  ))
+                }
+              </SectionX>);
             }
           }
               )}

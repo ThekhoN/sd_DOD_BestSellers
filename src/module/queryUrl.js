@@ -1,6 +1,6 @@
 // DOD
-  const liveURLx = 'deal-of-the-day';
-  // const liveURLx = 'test-z999';
+  // const liveURLx = 'deal-of-the-day';
+  const liveURLx = 'id2017sale';
 
   // local
   // var local_testURL = (window.admin && window.admin == 'true' ? '/admin' : '') + "csvData_mobileapi7.json";
